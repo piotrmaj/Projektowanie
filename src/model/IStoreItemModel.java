@@ -32,7 +32,7 @@ public interface IStoreItemModel extends IModel {
 	 * 
 	 * @param item
 	 */
-	public StoreItemDTO getStoreItem(StoreItemDTO item);
+	public StoreItemDTO getStoreItem(int id);
 
 	public List<StoreItemDTO> getStoreItems();
 
