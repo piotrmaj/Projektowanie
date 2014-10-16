@@ -6,29 +6,28 @@ import presenter.IProductPresenter;
 import view.IView;
 
 public class ImplIProductPresenter implements IProductPresenter {
-
+	private IModel model;
+	private IView view;
+	
+	
 	@Override
 	public IModel getModel() {
-		// TODO Auto-generated method stub
-		return null;
+		return model;
 	}
 
 	@Override
 	public IView getView() {
-		// TODO Auto-generated method stub
-		return null;
+		return view;
 	}
 
 	@Override
 	public void setModel(IModel model) {
-		// TODO Auto-generated method stub
-		
+		this.model=model;
 	}
 
 	@Override
 	public void setView(IView view) {
-		// TODO Auto-generated method stub
-		
+		this.view=view;
 	}
 
 	@Override

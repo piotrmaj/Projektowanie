@@ -109,7 +109,7 @@ public class ImplIProductModel implements IProductModel {
 					eq("produkt_id", p.getId()).query();
 			
 			for(StoreItemDTO item : results) {
-				item.setIloscDostepna(item.getIloscCalkowita());
+				item.setAvailable(item.getCount());
 				storeItemDao.update(item);
 			}
 		} catch (SQLException e) {
@@ -133,7 +133,7 @@ public class ImplIProductModel implements IProductModel {
 					eq("produkt_id", p.getId()).query();
 			
 			for(StoreItemDTO item : results) {
-				item.setIloscDostepna(0);
+				item.setAvailable(0);
 				storeItemDao.update(item);
 			}
 		} catch (SQLException e) {
