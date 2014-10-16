@@ -2,13 +2,13 @@ package dto;
 
 public class StoreItemDTO {
 	private int id;
-	private int idProduktu;
-	private String nazwa;
-	private int iloscCalkowita;
-	private int iloscDostepna;
-	private String jednostka;
-	private float cena;
-	private String opis;
+	private int productId;
+	private String name;
+	private int count;
+	private int available;
+	private String unit;
+	private float price;
+	private String description;
 	
 	public int getId() {
 		return id;
@@ -16,46 +16,46 @@ public class StoreItemDTO {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getIdProduktu() {
-		return idProduktu;
+	public int getProductId() {
+		return productId;
 	}
-	public void setIdProduktu(int idProduktu) {
-		this.idProduktu = idProduktu;
+	public void setProductId(int productId) {
+		this.productId = productId;
 	}
-	public String getNazwa() {
-		return nazwa;
+	public String getName() {
+		return name;
 	}
-	public void setNazwa(String nazwa) {
-		this.nazwa = nazwa;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public int getIloscCalkowita() {
-		return iloscCalkowita;
+	public int getCount() {
+		return count;
 	}
-	public void setIloscCalkowita(int iloscCalkowita) {
-		this.iloscCalkowita = iloscCalkowita;
+	public void setCount(int count) {
+		this.count = count;
 	}
-	public int getIloscDostepna() {
-		return iloscDostepna;
+	public int getAvailable() {
+		return available;
 	}
-	public void setIloscDostepna(int iloscDostepna) {
-		this.iloscDostepna = iloscDostepna;
+	public void setAvailable(int v) {
+		this.available = available;
 	}
-	public String getJednostka() {
-		return jednostka;
+	public String getUnit() {
+		return unit;
 	}
-	public void setJednostka(String jednostka) {
-		this.jednostka = jednostka;
+	public void setUnit(String unit) {
+		this.unit = unit;
 	}
-	public float getCena() {
-		return cena;
+	public float getPrice() {
+		return price;
 	}
-	public void setCena(float cena) {
-		this.cena = cena;
+	public void setPrice(float price) {
+		this.price = price;
 	}
-	public String getOpis() {
-		return opis;
+	public String getDescription() {
+		return description;
 	}
-	public void setOpis(String opis) {
-		this.opis = opis;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 }

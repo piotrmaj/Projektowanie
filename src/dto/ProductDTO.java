@@ -2,9 +2,13 @@ package dto;
 
 public class ProductDTO {
 	private int id;
-	private String nazwa;
-	private String jednostka;
-	private String opis;
+	private String name;
+	private String unit;
+	private String description;
+	
+	public ProductDTO(){
+		
+	}
 	
 	public int getId() {
 		return id;
@@ -12,22 +16,22 @@ public class ProductDTO {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getNazwa() {
-		return nazwa;
+	public String getName() {
+		return name;
 	}
-	public void setNazwa(String nazwa) {
-		this.nazwa = nazwa;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public String getJednostka() {
-		return jednostka;
+	public String getUnit() {
+		return unit;
 	}
-	public void setJednostka(String jednostka) {
-		this.jednostka = jednostka;
+	public void setUnit(String unit) {
+		this.unit = unit;
 	}
-	public String getOpis() {
-		return opis;
+	public String getDescription() {
+		return description;
 	}
-	public void setOpis(String opis) {
-		this.opis = opis;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 }
