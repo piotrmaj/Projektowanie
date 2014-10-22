@@ -86,7 +86,7 @@ public class StoreItemListView extends JFrame implements IStoreItemListView {
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							AddEditItemDialog addEditItemDialog = new AddEditItemDialog();
+							AddEditStoreItemDialog addEditItemDialog = new AddEditStoreItemDialog();
 							addEditItemDialog.setVisible(true);
 						} catch (Exception e) {
 							e.printStackTrace();
@@ -127,7 +127,7 @@ public class StoreItemListView extends JFrame implements IStoreItemListView {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ConfirmSendingDialog confirmDialog = new ConfirmSendingDialog();
+					ConfirmSendingStoreItemDialog confirmDialog = new ConfirmSendingStoreItemDialog();
 					confirmDialog.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

@@ -20,7 +20,7 @@ import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class AddEditItemDialog extends JDialog {
+public class AddEditStoreItemDialog extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private JTextField textField;
@@ -30,7 +30,7 @@ public class AddEditItemDialog extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public AddEditItemDialog() {
+	public AddEditStoreItemDialog() {
 		setBounds(100, 100, 324, 208);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));

@@ -19,7 +19,7 @@ import javax.swing.JComboBox;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class ConfirmSendingDialog extends JDialog {
+public class ConfirmSendingStoreItemDialog extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private JTextField textField;
@@ -27,7 +27,7 @@ public class ConfirmSendingDialog extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public ConfirmSendingDialog() {
+	public ConfirmSendingStoreItemDialog() {
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
