@@ -39,7 +39,6 @@ public class StoreItemListView extends JFrame {
 	 * Create the frame.
 	 */
 	public StoreItemListView() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -91,6 +90,20 @@ public class StoreItemListView extends JFrame {
 		verticalBox.add(verticalStrut);
 		
 		JButton btnNewButton_3 = new JButton("Dodaj");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							AddEditItemDialog addEditItemDialog = new AddEditItemDialog();
+							addEditItemDialog.setVisible(true);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
+			}
+		});
 		btnNewButton_3.setAlignmentX(Component.CENTER_ALIGNMENT);
 		verticalBox.add(btnNewButton_3);
 		
@@ -98,6 +111,20 @@ public class StoreItemListView extends JFrame {
 		verticalBox.add(verticalStrut_1);
 		
 		JButton btnNewButton_4 = new JButton("Edytuj");
+		btnNewButton_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							AddEditItemDialog addEditItemDialog = new AddEditItemDialog();
+							addEditItemDialog.setVisible(true);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
+			}
+		});
 		btnNewButton_4.setAlignmentX(Component.CENTER_ALIGNMENT);
 		verticalBox.add(btnNewButton_4);
 		
@@ -105,8 +132,24 @@ public class StoreItemListView extends JFrame {
 		verticalBox.add(verticalStrut_2);
 		
 		JButton btnNewButton_5 = new JButton("Usu\u0144");
+		btnNewButton_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							DeleteStoreItemDialog deleteDialog = new DeleteStoreItemDialog();
+							deleteDialog.setVisible(true);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
+			}
+		});
 		btnNewButton_5.setAlignmentX(Component.CENTER_ALIGNMENT);
 		verticalBox.add(btnNewButton_5);
 	}
+
 
 }
