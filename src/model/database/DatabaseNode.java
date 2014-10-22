@@ -5,6 +5,8 @@ import java.io.FileInputStream;
 import java.sql.SQLException;
 import java.util.Properties;
 
+import model.impl.ImplIProductModel;
+
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
@@ -75,5 +77,14 @@ public class DatabaseNode {
 		}
 	}
 	
+	public static void main(String[] args)
+	{
+		ImplIProductModel model=new ImplIProductModel();
+		ProductDTO p=new ProductDTO();
+		p.setName("Produkt");
+		p.setDescription("Jakis tam opis");
+		p.setUnit("kg.");
+		model.createProduct(p);
+	}
 
 }
