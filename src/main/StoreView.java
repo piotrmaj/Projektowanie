@@ -87,6 +87,16 @@ public class StoreView {
 		verticalBox.add(btnNewButton_3);
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							MagazineItemListView magazine = new MagazineItemListView();
+							magazine.setVisible(true);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
 			}
 		});
 	}
