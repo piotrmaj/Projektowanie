@@ -14,7 +14,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.BoxLayout;
 import javax.swing.Box;
 
-public class MainWindow {
+public class StoreView {
 
 	private JFrame frame;
 
@@ -25,7 +25,7 @@ public class MainWindow {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MainWindow window = new MainWindow();
+					StoreView window = new StoreView();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -37,7 +37,7 @@ public class MainWindow {
 	/**
 	 * Create the application.
 	 */
-	public MainWindow() {
+	public StoreView() {
 		initialize();
 	}
 
@@ -66,7 +66,7 @@ public class MainWindow {
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							MagazinePositions magazine = new MagazinePositions();
+							StoreItemListView magazine = new StoreItemListView();
 							magazine.setVisible(true);
 						} catch (Exception e) {
 							e.printStackTrace();
