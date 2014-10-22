@@ -1,32 +1,42 @@
 package presenter.impl;
 
+import java.awt.EventQueue;
+
+import main.MagazineItemListView;
 import main.StoreItemListView;
 import presenter.IStorePresenter;
+import view.IStoreView;
 
 public class StorePresenter implements IStorePresenter {
-
+	IStoreView view;
+	
+	public StorePresenter(IStoreView view)
+	{
+		this.view=view;
+	}
+	
+	
 	@Override
 	public void onProductsButtonClick() {
-		// TODO Auto-generated method stub
-		
+		view.ShowProductListView();
 	}
 
 	@Override
 	public void onStoreItemsButtonsClick() {
-		StoreItemListView magazine = new StoreItemListView();
-		magazine.setVisible(true);
+		view.ShowStoreItemListView();
+		
+		
 	}
 
 	@Override
 	public void onCurrentOrdersButtonClick() {
-		// TODO Auto-generated method stub
-		
+		view.ShowCurrentOrderListView();
 	}
 
 	@Override
 	public void onLogOutButtonClick() {
-		// TODO Auto-generated method stub
-		
+		//model.closeConnection();
+		view.CloseStoreView();
 	}
 
 }
