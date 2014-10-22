@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Component;
+import java.awt.Dialog.ModalExclusionType;
 
 public class StoreItemListView extends JFrame {
 
@@ -39,7 +40,7 @@ public class StoreItemListView extends JFrame {
 	 * Create the frame.
 	 */
 	public StoreItemListView() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

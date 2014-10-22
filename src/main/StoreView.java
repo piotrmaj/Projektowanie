@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.BoxLayout;
 import javax.swing.Box;
+import java.awt.Dialog.ModalExclusionType;
 
 public class StoreView {
 
@@ -46,6 +47,7 @@ public class StoreView {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
