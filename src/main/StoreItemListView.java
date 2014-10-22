@@ -10,6 +10,7 @@ import javax.swing.JList;
 import javax.swing.BoxLayout;
 import javax.swing.Box;
 import javax.swing.JButton;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Component;
@@ -60,6 +61,17 @@ public class StoreItemListView extends JFrame {
 		btnNewButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							ConfirmSendingDialog confirmDialog = new ConfirmSendingDialog();
+							confirmDialog.setVisible(true);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
+				
 			}
 		});
 		verticalBox.add(btnNewButton);

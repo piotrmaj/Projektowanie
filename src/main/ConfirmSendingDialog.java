@@ -15,6 +15,7 @@ import javax.swing.BoxLayout;
 import javax.swing.Box;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+import javax.swing.JComboBox;
 
 public class ConfirmSendingDialog extends JDialog {
 
@@ -173,12 +174,20 @@ public class ConfirmSendingDialog extends JDialog {
 					{
 						textField = new JTextField();
 						horizontalBox.add(textField);
-						textField.setColumns(10);
+						textField.setColumns(1);
 					}
 				}
 				{
 					JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("Rezerwacje");
 					verticalBox.add(rdbtnNewRadioButton_1);
+				}
+				{
+					JLabel lblWybierzZZarezerwowanych = new JLabel("Wybierz z zarezerwowanych");
+					verticalBox.add(lblWybierzZZarezerwowanych);
+				}
+				{
+					JComboBox comboBox = new JComboBox();
+					verticalBox.add(comboBox);
 				}
 			}
 		}
