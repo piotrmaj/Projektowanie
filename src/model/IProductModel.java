@@ -1,6 +1,7 @@
 package model;
 import java.util.List;
 
+import presenter.IProductPresenter;
 import dto.ProductDTO;
 import filter.IProductFilter;
 
@@ -13,7 +14,8 @@ import filter.IProductFilter;
  */
 public interface IProductModel {
 
-	
+	public IProductPresenter m_IntefejsPrezenteraProduktów = null;
+
 	/**
 	 * 
 	 * @param p

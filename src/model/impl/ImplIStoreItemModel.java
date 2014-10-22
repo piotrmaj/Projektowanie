@@ -95,6 +95,12 @@ public class ImplIStoreItemModel implements IStoreItemModel {
 	}
 
 	@Override
+	public void processSendStoreItems(List<StoreItemDTO> items) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
 	public void updateStoreItem(StoreItemDTO item) {
 		ConnectionSource conn = null;
 		try {
@@ -109,11 +115,6 @@ public class ImplIStoreItemModel implements IStoreItemModel {
 			if(conn != null)
 				conn.closeQuietly();
 		}
-	}
-
-	@Override
-	public void processSendStoreItems(List<StoreItemDTO> items) {
-		// TODO Auto-generated method stub
 	}
 
 }

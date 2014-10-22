@@ -1,29 +1,40 @@
 package main;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.Dialog.ModalExclusionType;
 import java.awt.EventQueue;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JList;
+import javax.swing.BoxLayout;
+import javax.swing.Box;
+import javax.swing.JButton;
 
-import presenter.IStoreItemListViewPresenter;
-import view.IStoreItemListView;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Component;
+import java.awt.Dialog.ModalExclusionType;
 
-public class StoreItemListView extends JFrame implements IStoreItemListView {
+public class StoreItemListView extends JFrame {
 
 	private JPanel contentPane;
-	
-	private IStoreItemListViewPresenter presenter;
 
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					StoreItemListView frame = new StoreItemListView();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 
 	/**
 	 * Create the frame.
@@ -52,8 +63,16 @@ public class StoreItemListView extends JFrame implements IStoreItemListView {
 		btnNewButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				presenter.onConfirmSendButtonClick();
-				
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							ConfirmSendingDialog confirmDialog = new ConfirmSendingDialog();
+							confirmDialog.setVisible(true);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
 				
 			}
 		});
@@ -74,6 +93,20 @@ public class StoreItemListView extends JFrame implements IStoreItemListView {
 		verticalBox.add(verticalStrut);
 		
 		JButton btnNewButton_3 = new JButton("Dodaj");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							AddEditItemDialog addEditItemDialog = new AddEditItemDialog();
+							addEditItemDialog.setVisible(true);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
+			}
+		});
 		btnNewButton_3.setAlignmentX(Component.CENTER_ALIGNMENT);
 		verticalBox.add(btnNewButton_3);
 		
@@ -86,7 +119,7 @@ public class StoreItemListView extends JFrame implements IStoreItemListView {
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							AddEditStoreItemDialog addEditItemDialog = new AddEditStoreItemDialog();
+							AddEditItemDialog addEditItemDialog = new AddEditItemDialog();
 							addEditItemDialog.setVisible(true);
 						} catch (Exception e) {
 							e.printStackTrace();
@@ -121,33 +154,5 @@ public class StoreItemListView extends JFrame implements IStoreItemListView {
 		verticalBox.add(btnNewButton_5);
 	}
 
-
-	@Override
-	public void ShowConfirmSendingDialog() {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ConfirmSendingStoreItemDialog confirmDialog = new ConfirmSendingStoreItemDialog();
-					confirmDialog.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-
-	@Override
-	public void ShowAddItemDialog() {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void ShowEditItemDialog() {
-		// TODO Auto-generated method stub
-		
-	}
 
 }
