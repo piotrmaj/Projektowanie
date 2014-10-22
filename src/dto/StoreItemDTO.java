@@ -3,7 +3,7 @@ package dto;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
-@DatabaseTable(tableName = "products")
+@DatabaseTable(tableName = "storeitems")
 public class StoreItemDTO {
 	@DatabaseField(id = true)
 	private int id;
