@@ -3,22 +3,33 @@ package main;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+
 import java.awt.GridBagLayout;
 import java.awt.FlowLayout;
+
 import javax.swing.JPanel;
 import javax.swing.JButton;
+
 import java.awt.BorderLayout;
+
 import javax.swing.SwingConstants;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import javax.swing.BoxLayout;
 import javax.swing.Box;
+
+import presenter.IStorePresenter;
+import presenter.impl.StorePresenter;
+
 import java.awt.Dialog.ModalExclusionType;
 
 public class StoreView {
-
+	
 	private JFrame frame;
-
+	IStorePresenter presenter;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -55,6 +66,8 @@ public class StoreView {
 		JPanel panel = new JPanel();
 		frame.getContentPane().add(panel);
 		panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
+		presenter= new StorePresenter();
+		
 		
 		Box verticalBox = Box.createVerticalBox();
 		panel.add(verticalBox);
@@ -68,8 +81,7 @@ public class StoreView {
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							StoreItemListView magazine = new StoreItemListView();
-							magazine.setVisible(true);
+							presenter.onStoreItemsButtonsClick();
 						} catch (Exception e) {
 							e.printStackTrace();
 						}

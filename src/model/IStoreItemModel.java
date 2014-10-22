@@ -12,7 +12,7 @@ import filter.IStoreItemFilter;
  * @version 1.0
  * @created 15-paü-2014 21:59:43
  */
-public interface IStoreItemModel extends IModel {
+public interface IStoreItemModel {
 
 	public IStoreItemPresenter m_IntefejsPrezenteraPozycjiWMagazynie = null;
 

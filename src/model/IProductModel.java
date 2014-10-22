@@ -12,7 +12,7 @@ import filter.IProductFilter;
  * @version 1.0
  * @created 15-paŸ-2014 22:00:06
  */
-public interface IProductModel  extends IModel {
+public interface IProductModel {
 
 	public IProductPresenter m_IntefejsPrezenteraProduktów = null;
 
