@@ -1,31 +1,24 @@
 package main;
 
+import java.awt.Dialog.ModalExclusionType;
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-
-import java.awt.GridBagLayout;
 import java.awt.FlowLayout;
-import java.awt.Window;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.List;
 
-import javax.swing.JPanel;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
-
-import java.awt.BorderLayout;
-
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-
-import javax.swing.BoxLayout;
-import javax.swing.Box;
-
+import dto.ProductDTO;
+import dto.StoreItemDTO;
 import presenter.IStorePresenter;
 import presenter.impl.StorePresenter;
 import view.IStoreView;
-
-import java.awt.Dialog.ModalExclusionType;
 
 public class StoreView implements IStoreView{
 	
@@ -116,13 +109,23 @@ public class StoreView implements IStoreView{
 		});
 		
 	}
+	
+	@Override
+	public void ShowCurrentOrderListView() {
+		return;
+	}
 
 	@Override
-	public void ShowProductListView() {
+	public void CloseStoreView() {
+		this.frame.dispose();
+	}
+
+	@Override
+	public void ShowProductListView(List<ProductDTO> products) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MagazineItemListView magazine = new MagazineItemListView();
+					ProductListView magazine = new ProductListView();
 					magazine.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -132,7 +135,7 @@ public class StoreView implements IStoreView{
 	}
 
 	@Override
-	public void ShowStoreItemListView() {
+	public void ShowStoreItemListView(List<StoreItemDTO> storeItems) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -143,16 +146,6 @@ public class StoreView implements IStoreView{
 				}
 			}
 		});
-	}
-
-	@Override
-	public void ShowCurrentOrderListView() {
-		return;
-	}
-
-	@Override
-	public void CloseStoreView() {
-		this.frame.dispose();
 	}
 	
 

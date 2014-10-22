@@ -8,14 +8,14 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JList;
 
-public class MagazineItemListView extends JFrame {
+public class ProductListView extends JFrame {
 
 	private JPanel contentPane;
 
 	/**
 	 * Create the frame.
 	 */
-	public MagazineItemListView() {
+	public ProductListView() {
 		setTitle("Produkty w magazynie");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
