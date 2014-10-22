@@ -40,7 +40,10 @@ public class StoreItemListView extends JFrame {
 	 * Create the frame.
 	 */
 	public StoreItemListView() {
+<<<<<<< HEAD
 		setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
+=======
+>>>>>>> branch 'master' of https://mariuszturkowski92@github.com/maju1993/Projektowanie.git
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -92,20 +95,6 @@ public class StoreItemListView extends JFrame {
 		verticalBox.add(verticalStrut);
 		
 		JButton btnNewButton_3 = new JButton("Dodaj");
-		btnNewButton_3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				EventQueue.invokeLater(new Runnable() {
-					public void run() {
-						try {
-							AddEditItemDialog addEditItemDialog = new AddEditItemDialog();
-							addEditItemDialog.setVisible(true);
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
-					}
-				});
-			}
-		});
 		btnNewButton_3.setAlignmentX(Component.CENTER_ALIGNMENT);
 		verticalBox.add(btnNewButton_3);
 		
