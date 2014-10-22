@@ -61,6 +61,20 @@ public class MainWindow {
 		verticalBox.add(btnNewButton_1);
 		
 		JButton btnNewButton = new JButton("Pozycje w magazynie");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							MagazinePositions magazine = new MagazinePositions();
+							magazine.setVisible(true);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
+			}
+		});
 		verticalBox.add(btnNewButton);
 		btnNewButton.setVerticalAlignment(SwingConstants.BOTTOM);
 		
