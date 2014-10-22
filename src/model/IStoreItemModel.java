@@ -1,7 +1,6 @@
 package model;
 import java.util.List;
 
-import presenter.IStoreItemPresenter;
 import dto.StoreItemDTO;
 import filter.IStoreItemFilter;
 
@@ -13,8 +12,6 @@ import filter.IStoreItemFilter;
  * @created 15-paü-2014 21:59:43
  */
 public interface IStoreItemModel {
-
-	public IStoreItemPresenter m_IntefejsPrezenteraPozycjiWMagazynie = null;
 
 	/**
 	 * 

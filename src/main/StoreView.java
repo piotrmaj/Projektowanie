@@ -1,31 +1,26 @@
 package main;
 
+import java.awt.Dialog.ModalExclusionType;
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-
-import java.awt.GridBagLayout;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.List;
 
-import javax.swing.JPanel;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
-
-import java.awt.BorderLayout;
-
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-
-import javax.swing.BoxLayout;
-import javax.swing.Box;
-
+import dto.ProductDTO;
+import dto.StoreItemDTO;
 import presenter.IStorePresenter;
 import presenter.impl.StorePresenter;
+import view.IStoreView;
 
-import java.awt.Dialog.ModalExclusionType;
-
-public class StoreView {
+public class StoreView implements IStoreView{
 	
 	private JFrame frame;
 	IStorePresenter presenter;
@@ -66,7 +61,10 @@ public class StoreView {
 		JPanel panel = new JPanel();
 		frame.getContentPane().add(panel);
 		panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
-		presenter= new StorePresenter();
+		
+		
+		// PRESENTER
+		presenter= new StorePresenter(this);
 		
 		
 		Box verticalBox = Box.createVerticalBox();
@@ -75,19 +73,17 @@ public class StoreView {
 		JButton btnNewButton_1 = new JButton("Produkty magazynowe");
 		verticalBox.add(btnNewButton_1);
 		
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				presenter.onProductsButtonClick();
+			}
+		});
+		
 		JButton btnNewButton = new JButton("Pozycje w magazynie");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				presenter.onStoreItemsButtonsClick();
 				
-				EventQueue.invokeLater(new Runnable() {
-					public void run() {
-						try {
-							presenter.onStoreItemsButtonsClick();
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
-					}
-				});
 			}
 		});
 		verticalBox.add(btnNewButton);
@@ -98,20 +94,59 @@ public class StoreView {
 		
 		JButton btnNewButton_3 = new JButton("Wyloguj");
 		verticalBox.add(btnNewButton_3);
-		btnNewButton_1.addActionListener(new ActionListener() {
+		
+		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				EventQueue.invokeLater(new Runnable() {
-					public void run() {
-						try {
-							MagazineItemListView magazine = new MagazineItemListView();
-							magazine.setVisible(true);
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
-					}
-				});
+				presenter.onCurrentOrdersButtonClick();
+			}
+		});
+		
+		
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				presenter.onLogOutButtonClick();
+			}
+		});
+		
+	}
+	
+	@Override
+	public void ShowCurrentOrderListView() {
+		return;
+	}
+
+	@Override
+	public void CloseStoreView() {
+		this.frame.dispose();
+	}
+
+	@Override
+	public void ShowProductListView(List<ProductDTO> products) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					ProductListView magazine = new ProductListView();
+					magazine.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
 		});
 	}
+
+	@Override
+	public void ShowStoreItemListView(List<StoreItemDTO> storeItems) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					StoreItemListView magazine = new StoreItemListView();
+					magazine.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+	
 
 }

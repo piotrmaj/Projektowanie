@@ -1,31 +1,40 @@
 package presenter.impl;
 
-import java.awt.EventQueue;
+import java.awt.List;
+import java.util.ArrayList;
 
-import main.MagazineItemListView;
-import main.StoreItemListView;
+import dto.ProductDTO;
+import dto.StoreItemDTO;
+import model.IProductModel;
+import model.IStoreItemModel;
+import model.impl.ImplIProductModel;
+import model.impl.ImplIStoreItemModel;
 import presenter.IStorePresenter;
 import view.IStoreView;
 
 public class StorePresenter implements IStorePresenter {
 	IStoreView view;
+	IStoreItemModel storeItemModel;
+	IProductModel productModel;
 	
 	public StorePresenter(IStoreView view)
 	{
 		this.view=view;
+		storeItemModel=new ImplIStoreItemModel(); 
+		productModel = new ImplIProductModel();
 	}
 	
 	
 	@Override
 	public void onProductsButtonClick() {
-		view.ShowProductListView();
+		ArrayList<ProductDTO> products=(ArrayList<ProductDTO>) productModel.getProducts();
+		view.ShowProductListView(products);
 	}
 
 	@Override
 	public void onStoreItemsButtonsClick() {
-		view.ShowStoreItemListView();
-		
-		
+		ArrayList<StoreItemDTO> items=(ArrayList<StoreItemDTO>) storeItemModel.getStoreItems();
+		view.ShowStoreItemListView(items);
 	}
 
 	@Override
