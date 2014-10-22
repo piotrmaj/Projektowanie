@@ -22,7 +22,7 @@ public class DatabaseNode {
 	private static String DBPASS;
 	
 	private static final DatabaseNode node = new DatabaseNode();
-	private static boolean isInitialized = true;
+	private static boolean isInitialized = false;
 	
 	private DatabaseNode () {
 		initialize();

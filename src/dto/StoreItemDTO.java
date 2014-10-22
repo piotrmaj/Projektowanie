@@ -1,13 +1,25 @@
 package dto;
 
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
+
+@DatabaseTable(tableName = "products")
 public class StoreItemDTO {
+	@DatabaseField(id = true)
 	private int id;
+	@DatabaseField
 	private int productId;
+	@DatabaseField
 	private String name;
+	@DatabaseField
 	private int count;
+	@DatabaseField
 	private int available;
+	@DatabaseField
 	private String unit;
+	@DatabaseField
 	private float price;
+	@DatabaseField
 	private String description;
 	
 	public int getId() {
