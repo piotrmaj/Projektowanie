@@ -17,12 +17,14 @@ import javax.swing.border.EmptyBorder;
 
 import presenter.IStoreItemListViewPresenter;
 import view.IStoreItemListView;
+import javax.swing.JTable;
 
 public class StoreItemListView extends JFrame implements IStoreItemListView {
 
 	private JPanel contentPane;
 	
 	private IStoreItemListViewPresenter presenter;
+	private JTable table;
 
 
 	/**
@@ -36,9 +38,6 @@ public class StoreItemListView extends JFrame implements IStoreItemListView {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
-		
-		JList list = new JList();
-		contentPane.add(list, BorderLayout.CENTER);
 		
 		JPanel panel = new JPanel();
 		contentPane.add(panel, BorderLayout.EAST);
@@ -119,6 +118,9 @@ public class StoreItemListView extends JFrame implements IStoreItemListView {
 		});
 		btnNewButton_5.setAlignmentX(Component.CENTER_ALIGNMENT);
 		verticalBox.add(btnNewButton_5);
+		
+		table = new JTable();
+		contentPane.add(table, BorderLayout.CENTER);
 	}
 
 

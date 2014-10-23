@@ -7,10 +7,12 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JList;
+import javax.swing.JTable;
 
 public class MagazineItemListView extends JFrame {
 
 	private JPanel contentPane;
+	private JTable table;
 
 	/**
 	 * Create the frame.
@@ -24,8 +26,8 @@ public class MagazineItemListView extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
-		JList list = new JList();
-		contentPane.add(list, BorderLayout.CENTER);
+		table = new JTable();
+		contentPane.add(table, BorderLayout.CENTER);
 	}
 
 }
