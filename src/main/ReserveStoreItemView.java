@@ -13,7 +13,7 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-public class ReserveProductsView extends JDialog {
+public class ReserveStoreItemView extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private JTextField textField;
@@ -21,7 +21,7 @@ public class ReserveProductsView extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public ReserveProductsView() {
+	public ReserveStoreItemView() {
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));

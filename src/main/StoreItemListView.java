@@ -176,7 +176,7 @@ public class StoreItemListView extends JFrame implements IStoreItemListView {
 
 
 	@Override
-	public void ShowUnreserbeStoreItemDialog() {
+	public void ShowReleaseStoreItemDialog() {
 		// TODO Auto-generated method stub
 		
 	}

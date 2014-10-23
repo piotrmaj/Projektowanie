@@ -11,5 +11,5 @@ public interface IStoreItemListView {
 	
 	void ShowReservreStoreItemDialog();
 	
-	void ShowUnreserbeStoreItemDialog();
+	void ShowReleaseStoreItemDialog();
 }
