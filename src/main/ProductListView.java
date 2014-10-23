@@ -1,12 +1,11 @@
 package main;
 
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JList;
 
 public class ProductListView extends JFrame {
 
@@ -24,8 +23,8 @@ public class ProductListView extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
-		JList list = new JList();
-		contentPane.add(list, BorderLayout.CENTER);
+		JTable table = new JTable();
+		contentPane.add(table, BorderLayout.CENTER);
 	}
 
 }

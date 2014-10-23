@@ -6,4 +6,10 @@ public interface IStoreItemListView {
 	void ShowAddItemDialog();
 	
 	void ShowEditItemDialog();
+	
+	void ShowDeleteStoreItemDialog();
+	
+	void ShowReservreStoreItemDialog();
+	
+	void ShowUnreserbeStoreItemDialog();
 }

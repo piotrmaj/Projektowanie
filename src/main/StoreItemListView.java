@@ -164,13 +164,52 @@ public class StoreItemListView extends JFrame implements IStoreItemListView {
 
 	@Override
 	public void ShowAddItemDialog() {
-		// TODO Auto-generated method stub
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					AddEditStoreItemDialog addEditStoreItemDialog = new AddEditStoreItemDialog();
+					addEditStoreItemDialog.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 		
 	}
 
 
 	@Override
 	public void ShowEditItemDialog() {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					AddEditStoreItemDialog addEditStoreItemDialog = new AddEditStoreItemDialog();
+					addEditStoreItemDialog.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		
+	}
+
+
+	@Override
+	public void ShowDeleteStoreItemDialog() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void ShowReservreStoreItemDialog() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void ShowUnreserbeStoreItemDialog() {
 		// TODO Auto-generated method stub
 		
 	}
