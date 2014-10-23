@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 import model.impl.ImplIProductModel;
+import model.impl.ImplIStoreItemModel;
 
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.support.ConnectionSource;
@@ -79,12 +80,19 @@ public class DatabaseNode {
 	
 	public static void main(String[] args)
 	{
-		ImplIProductModel model=new ImplIProductModel();
+		/*ImplIProductModel model=new ImplIProductModel();
 		ProductDTO p=new ProductDTO();
 		p.setName("Produkt");
 		p.setDescription("Jakis tam opis");
 		p.setUnit("kg.");
-		model.createProduct(p);
+		model.createProduct(p);*/
+		ImplIStoreItemModel itemModel=new ImplIStoreItemModel();
+		StoreItemDTO i=new StoreItemDTO();
+		i.setName("Pozycja 1");
+		i.setCount(5);
+		i.setUnit("kg.");
+		i.setPrice((float) 20.35);
+		itemModel.createStoreItem(i);
 	}
 
 }

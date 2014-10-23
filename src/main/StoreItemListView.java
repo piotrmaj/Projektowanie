@@ -6,18 +6,19 @@ import java.awt.Dialog.ModalExclusionType;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 
 import presenter.IStoreItemListViewPresenter;
 import view.IStoreItemListView;
-import javax.swing.JTable;
+import dto.StoreItemDTO;
 
 public class StoreItemListView extends JFrame implements IStoreItemListView {
 
@@ -25,12 +26,13 @@ public class StoreItemListView extends JFrame implements IStoreItemListView {
 	
 	private IStoreItemListViewPresenter presenter;
 	private JTable table;
+	Object[][] data;
 
 
 	/**
 	 * Create the frame.
 	 */
-	public StoreItemListView() {
+	public StoreItemListView(List<StoreItemDTO> items) {
 
 		setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
 		setBounds(100, 100, 450, 300);
@@ -119,7 +121,28 @@ public class StoreItemListView extends JFrame implements IStoreItemListView {
 		btnNewButton_5.setAlignmentX(Component.CENTER_ALIGNMENT);
 		verticalBox.add(btnNewButton_5);
 		
-		table = new JTable();
+		
+		String[] columnNames = {"Id",
+                "Name",
+                "Count",
+                "Available",
+                "Unit","Price","Description"};
+		data=new Object[items.size()][7];
+		int i=0;
+		for(StoreItemDTO item : items)
+		{
+			data[i][0]=item.getId();
+			data[i][1]=item.getName();
+			data[i][2]=item.getCount();
+			data[i][3]=item.getAvailable();
+			data[i][4]=item.getUnit();
+			data[i][5]=item.getPrice();
+			data[i][6]=item.getDescription();
+			i++;
+		}
+		
+		table = new JTable(data,columnNames);
+		
 		contentPane.add(table, BorderLayout.CENTER);
 	}
 
@@ -151,5 +174,4 @@ public class StoreItemListView extends JFrame implements IStoreItemListView {
 		// TODO Auto-generated method stub
 		
 	}
-
 }

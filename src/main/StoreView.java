@@ -14,11 +14,11 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import dto.ProductDTO;
-import dto.StoreItemDTO;
 import presenter.IStorePresenter;
 import presenter.impl.StorePresenter;
 import view.IStoreView;
+import dto.ProductDTO;
+import dto.StoreItemDTO;
 
 public class StoreView implements IStoreView{
 	
@@ -135,11 +135,11 @@ public class StoreView implements IStoreView{
 	}
 
 	@Override
-	public void ShowStoreItemListView(List<StoreItemDTO> storeItems) {
+	public void ShowStoreItemListView(final List<StoreItemDTO> storeItems) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					StoreItemListView magazine = new StoreItemListView();
+					StoreItemListView magazine = new StoreItemListView(storeItems);
 					magazine.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
