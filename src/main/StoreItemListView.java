@@ -51,9 +51,7 @@ public class StoreItemListView extends JFrame implements IStoreItemListView {
 		btnNewButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				presenter.onConfirmSendButtonClick();
-				
-				
+				presenter.onConfirmSendButtonClick();		
 			}
 		});
 		verticalBox.add(btnNewButton);
@@ -82,16 +80,7 @@ public class StoreItemListView extends JFrame implements IStoreItemListView {
 		JButton btnNewButton_4 = new JButton("Edytuj");
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				EventQueue.invokeLater(new Runnable() {
-					public void run() {
-						try {
-							AddEditStoreItemDialog addEditItemDialog = new AddEditStoreItemDialog();
-							addEditItemDialog.setVisible(true);
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
-					}
-				});
+				presenter.onEditItemStoreButtonClick();
 			}
 		});
 		btnNewButton_4.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -103,17 +92,7 @@ public class StoreItemListView extends JFrame implements IStoreItemListView {
 		JButton btnNewButton_5 = new JButton("Usu\u0144");
 		btnNewButton_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
-				EventQueue.invokeLater(new Runnable() {
-					public void run() {
-						try {
-							DeleteStoreItemDialog deleteDialog = new DeleteStoreItemDialog();
-							deleteDialog.setVisible(true);
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
-					}
-				});
+					presenter.onDeleteItemStoreButtonClick();;
 			}
 		});
 		btnNewButton_5.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -173,7 +152,16 @@ public class StoreItemListView extends JFrame implements IStoreItemListView {
 
 	@Override
 	public void ShowDeleteStoreItemDialog() {
-		// TODO Auto-generated method stub
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					DeleteStoreItemDialog deleteStoreItemDialog = new DeleteStoreItemDialog();
+					deleteStoreItemDialog.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 		
 	}
 

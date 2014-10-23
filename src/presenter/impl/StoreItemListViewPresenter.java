@@ -16,5 +16,31 @@ public class StoreItemListViewPresenter implements IStoreItemListViewPresenter {
 		view.ShowConfirmSendingDialog();
 	}
 
+	@Override
+	public void onReserveButtonClick() {
+		view.ShowReservreStoreItemDialog();
+		
+	}
+
+	@Override
+	public void onAddItemStoreButtonlClick() {
+		view.ShowAddItemDialog();
+		
+	}
+
+	@Override
+	public void onEditItemStoreButtonClick() {
+		view.ShowEditItemDialog();
+		
+	}
+
+	@Override
+	public void onDeleteItemStoreButtonClick() {
+		view.ShowDeleteStoreItemDialog();
+		
+	}
+	
+	
+
 	
 }

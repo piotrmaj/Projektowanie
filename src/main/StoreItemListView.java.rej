@@ -1,0 +1,10 @@
+diff a/src/main/StoreItemListView.java b/src/main/StoreItemListView.java	(rejected hunks)
+@@ -86,7 +86,7 @@
+ 				EventQueue.invokeLater(new Runnable() {
+ 					public void run() {
+ 						try {
+-							AddEditItemDialog addEditItemDialog = new AddEditItemDialog();
++							AddEditStoreItemDialog addEditItemDialog = new AddEditStoreItemDialog();
+ 							addEditItemDialog.setVisible(true);
+ 						} catch (Exception e) {
+ 							e.printStackTrace();
