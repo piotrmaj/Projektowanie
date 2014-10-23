@@ -6,6 +6,8 @@ public interface IStoreItemListViewPresenter {
 	
 	void onReserveButtonClick();
 	
+	void onReleaseButtonClick();
+	
 	void onAddItemStoreButtonlClick();
 	
 	void onEditItemStoreButtonClick();
