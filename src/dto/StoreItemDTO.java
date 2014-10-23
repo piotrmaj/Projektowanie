@@ -49,7 +49,7 @@ public class StoreItemDTO {
 	public int getAvailable() {
 		return available;
 	}
-	public void setAvailable(int v) {
+	public void setAvailable(int available) {
 		this.available = available;
 	}
 	public String getUnit() {

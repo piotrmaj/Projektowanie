@@ -66,7 +66,6 @@ public class DatabaseNode {
 		ConnectionSource conn = null;
 		try {
 			conn = getConnection();
-			
 			TableUtils.createTableIfNotExists(conn, ProductDTO.class);
 			TableUtils.createTableIfNotExists(conn, StoreItemDTO.class);
 
@@ -80,18 +79,27 @@ public class DatabaseNode {
 	
 	public static void main(String[] args)
 	{
-		/*ImplIProductModel model=new ImplIProductModel();
+		ImplIProductModel model=new ImplIProductModel();
 		ProductDTO p=new ProductDTO();
 		p.setName("Produkt");
 		p.setDescription("Jakis tam opis");
 		p.setUnit("kg.");
-		model.createProduct(p);*/
+		model.createProduct(p);
 		ImplIStoreItemModel itemModel=new ImplIStoreItemModel();
 		StoreItemDTO i=new StoreItemDTO();
 		i.setName("Pozycja 1");
 		i.setCount(5);
+		i.setAvailable(5);
 		i.setUnit("kg.");
 		i.setPrice((float) 20.35);
+		itemModel.createStoreItem(i);
+		i=new StoreItemDTO();
+		i.setName("Deska");
+		i.setCount(8);
+		i.setAvailable(3);
+		i.setUnit("kg.");
+		i.setPrice((float) 20.35);
+		i.setDescription("Opisik");
 		itemModel.createStoreItem(i);
 	}
 
