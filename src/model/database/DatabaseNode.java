@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 import model.impl.ImplIProductModel;
+import model.impl.ImplIStoreItemModel;
 
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.support.ConnectionSource;
@@ -65,7 +66,6 @@ public class DatabaseNode {
 		ConnectionSource conn = null;
 		try {
 			conn = getConnection();
-			
 			TableUtils.createTableIfNotExists(conn, ProductDTO.class);
 			TableUtils.createTableIfNotExists(conn, StoreItemDTO.class);
 
@@ -85,6 +85,22 @@ public class DatabaseNode {
 		p.setDescription("Jakis tam opis");
 		p.setUnit("kg.");
 		model.createProduct(p);
+		ImplIStoreItemModel itemModel=new ImplIStoreItemModel();
+		StoreItemDTO i=new StoreItemDTO();
+		i.setName("Pozycja 1");
+		i.setCount(5);
+		i.setAvailable(5);
+		i.setUnit("kg.");
+		i.setPrice((float) 20.35);
+		itemModel.createStoreItem(i);
+		i=new StoreItemDTO();
+		i.setName("Deska");
+		i.setCount(8);
+		i.setAvailable(3);
+		i.setUnit("kg.");
+		i.setPrice((float) 20.35);
+		i.setDescription("Opisik");
+		itemModel.createStoreItem(i);
 	}
 
 }
