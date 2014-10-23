@@ -7,14 +7,22 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 
-public class ProductListView extends JFrame {
+import presenter.IProductPresenter;
+import presenter.impl.ProductPresenter;
+import view.IProductListView;
 
+public class ProductListView extends JFrame implements IProductListView {
+
+	private IProductPresenter presenter;
 	private JPanel contentPane;
 
 	/**
 	 * Create the frame.
 	 */
 	public ProductListView() {
+		//Presenter
+		presenter = new ProductPresenter(this);
+		
 		setTitle("Produkty w magazynie");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -25,6 +33,24 @@ public class ProductListView extends JFrame {
 		
 		JTable table = new JTable();
 		contentPane.add(table, BorderLayout.CENTER);
+	}
+
+	@Override
+	public void ShowCreateProductDialog() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void ShowEditProductDialog() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void ShowDeleteProductDialog() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

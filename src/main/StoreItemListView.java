@@ -91,6 +91,11 @@ public class StoreItemListView extends JFrame implements IStoreItemListView {
 
 		JButton btnNewButton_3 = new JButton("Dodaj");
 		btnNewButton_3.setAlignmentX(Component.CENTER_ALIGNMENT);
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				presenter.onAddItemStoreButtonlClick();
+			}
+		});
 		verticalBox.add(btnNewButton_3);
 
 		Component verticalStrut_1 = Box.createVerticalStrut(20);
@@ -172,15 +177,15 @@ public class StoreItemListView extends JFrame implements IStoreItemListView {
 
 	@Override
 	public void ShowReservreStoreItemDialog() {
-		ReserveStoreItemView reserveStoreItemView = new ReserveStoreItemView();
-		reserveStoreItemView.setVisible(true);
+		ReserveStoreItemDialog reserveStoreItemDialog = new ReserveStoreItemDialog();
+		reserveStoreItemDialog.setVisible(true);
 
 	}
 
 	@Override
 	public void ShowReleaseStoreItemDialog() {
-		ReleaseStoreItemReservationView releaseStoreItemReservationView = new ReleaseStoreItemReservationView();
-		releaseStoreItemReservationView.setVisible(true);
+		ReleaseStoreItemReservationDialog releaseStoreItemReservationDialog = new ReleaseStoreItemReservationDialog();
+		releaseStoreItemReservationDialog.setVisible(true);
 
 	}
 }
