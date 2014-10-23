@@ -5,7 +5,7 @@ import com.j256.ormlite.table.DatabaseTable;
 
 @DatabaseTable(tableName = "products")
 public class ProductDTO {
-	@DatabaseField(id = true)
+	@DatabaseField(generatedId=true)
 	private int id;
 	@DatabaseField
 	private String name;
