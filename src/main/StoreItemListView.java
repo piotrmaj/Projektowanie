@@ -138,8 +138,14 @@ public class StoreItemListView extends JFrame implements IStoreItemListView {
 			i++;
 		}
 
-		table = new JTable(data, columnNames);
+		//table = new JTable(data, columnNames);
+		table = new JTable(data, columnNames) {
+	        private static final long serialVersionUID = 1L;
 
+	        public boolean isCellEditable(int row, int column) {                
+	                return false;               
+	        };
+	    };
 		contentPane.add(table, BorderLayout.CENTER);
 	}
 

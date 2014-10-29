@@ -1,16 +1,15 @@
 package presenter.impl;
 
-import java.awt.List;
 import java.util.ArrayList;
 
-import dto.ProductDTO;
-import dto.StoreItemDTO;
 import model.IProductModel;
 import model.IStoreItemModel;
 import model.impl.ImplIProductModel;
 import model.impl.ImplIStoreItemModel;
 import presenter.IStorePresenter;
 import view.IStoreView;
+import dto.ProductDTO;
+import dto.StoreItemDTO;
 
 public class StorePresenter implements IStorePresenter {
 	IStoreView view;
