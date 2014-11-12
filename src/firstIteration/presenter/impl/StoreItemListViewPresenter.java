@@ -1,8 +1,10 @@
 package firstIteration.presenter.impl;
 
 import firstIteration.presenter.IStoreItemListViewPresenter;
+import firstIteration.view.IAddEditStoreItemDialog;
 import firstIteration.view.IStoreItemListView;
 import firstIteration.view.components.AddEditStoreItemDialog;
+import firstIteration.view.components.StoreItemListView;
 
 public class StoreItemListViewPresenter implements IStoreItemListViewPresenter {
 	IStoreItemListView view;

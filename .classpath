@@ -6,6 +6,5 @@
 	<classpathentry kind="lib" path="lib/ormlite-jdbc-4.48.jar"/>
 	<classpathentry kind="lib" path="lib/postgresql-9.3-1102.jdbc3.jar"/>
 	<classpathentry kind="lib" path="lib/sqlite-jdbc-3.8.7.jar"/>
-	<classpathentry kind="lib" path="lib/JTattoo-1.6.10.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
