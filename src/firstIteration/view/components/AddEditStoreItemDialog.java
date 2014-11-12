@@ -1,10 +1,12 @@
 package firstIteration.view.components;
+import firstIteration.view.IAddEditStoreItemDialog;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JComboBox;
@@ -17,23 +19,33 @@ import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JTextField;
+
+import firstIteration.presenter.IStoreItemListViewPresenter;
+import firstIteration.presenter.impl.StoreItemListViewPresenter;
+import firstIteration.view.IStoreItemListView;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class AddEditStoreItemDialog extends JDialog {
+public class AddEditStoreItemDialog extends JFrame {
 
-	private final JPanel contentPanel = new JPanel();
+	private final JFrame contentPanel = new JFrame();
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
+	private IStoreItemListViewPresenter presenter;
 
 	/**
 	 * Create the dialog.
 	 */
 	public AddEditStoreItemDialog() {
+		
+		presenter = new StoreItemListViewPresenter(this);
+
+
 		setBounds(100, 100, 324, 208);
 		getContentPane().setLayout(new BorderLayout());
-		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		//contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		GridBagLayout gbl_contentPanel = new GridBagLayout();
 		gbl_contentPanel.columnWidths = new int[]{74, 0, 0};
@@ -140,4 +152,6 @@ public class AddEditStoreItemDialog extends JDialog {
 		}
 	}
 
+	
+	
 }

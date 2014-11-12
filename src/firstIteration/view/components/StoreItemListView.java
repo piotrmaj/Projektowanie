@@ -160,8 +160,8 @@ public class StoreItemListView extends JFrame implements IStoreItemListView {
 	@Override
 	public void ShowAddItemDialog() {
 
-		AddEditStoreItemDialog addEditStoreItemDialog = new AddEditStoreItemDialog();
-		addEditStoreItemDialog.setVisible(true);
+	//	AddEditStoreItemDialog addEditStoreItemDialog = new AddEditStoreItemDialog();
+	//	presenter.addEditStoreItemDialog.setVisible(true);
 
 	}
 
