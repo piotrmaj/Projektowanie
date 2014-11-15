@@ -1,35 +1,28 @@
 package firstIteration.view.components;
-import firstIteration.view.IAddEditStoreItemDialog;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JComboBox;
-import javax.swing.BoxLayout;
-import javax.swing.Box;
-import java.awt.GridLayout;
 import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 import firstIteration.presenter.IStoreItemListViewPresenter;
 import firstIteration.presenter.impl.StoreItemListViewPresenter;
-import firstIteration.view.IStoreItemListView;
 
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+public class AddEditStoreItemDialog extends JDialog {
 
-public class AddEditStoreItemDialog extends JFrame {
-
-	private final JFrame contentPanel = new JFrame();
+	private final JPanel contentPanel = new JPanel();
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
