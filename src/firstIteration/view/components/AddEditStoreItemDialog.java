@@ -30,7 +30,6 @@ public class AddEditStoreItemDialog extends JDialog {
 	private JTextField textField_2;
 	private JComboBox<ProductDTO> comboBox;
 	private IStoreItemListViewPresenter presenter;
-	private StoreItemDTO storeitem;
 	//Do wyswietlania listy produktów w combobox
 	private List<ProductDTO> productDTO;
 	private StoreItemDTO storeItem;
@@ -139,11 +138,11 @@ public class AddEditStoreItemDialog extends JDialog {
 					public void actionPerformed(ActionEvent arg0) {
 						StoreItemDTO returnItem = new StoreItemDTO();
 						returnItem.setName(textField.getText());
-						returnItem.setPrice(Integer.getInteger(textField_1.getText()));
-						returnItem.setCount(Integer.getInteger(textField_2.getText()));
+						returnItem.setPrice(Float.parseFloat(textField_1.getText()));
+						returnItem.setCount(Integer.parseInt(textField_2.getText()));
 						returnItem.setProductId(((ProductDTO)comboBox.getSelectedItem()).getId());
 						if(edit){
-							returnItem.setId(storeitem.getId());
+							returnItem.setId(storeItem.getId());
 							presenter.onConfirmEditItemStoreButtonClick(returnItem);
 						}else{
 							presenter.onConfirmAddStoreItemButtonClick(returnItem);

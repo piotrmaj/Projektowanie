@@ -83,14 +83,12 @@ public class StoreItemListViewPresenter implements IStoreItemListViewPresenter {
 	
 	@Override
 	public void onConfirmEditItemStoreButtonClick(StoreItemDTO storeItem) {
-		storeModel.updateStoreItem(storeItem);	
+		storeModel.updateStoreItem(storeItem);
 		view.populateListView(storeModel.getStoreItems());
 	}
 
 	@Override
 	public void onDeleteItemStoreButtonClick(int id) {
-		
-		
 		StoreItemDTO storeItem = storeModel.getStoreItem(id);
 		this.deleteStoreItemDialog = new DeleteStoreItemDialog(storeItem);
 		deleteStoreItemDialog.setVisible(true);
@@ -99,22 +97,19 @@ public class StoreItemListViewPresenter implements IStoreItemListViewPresenter {
 	
 	@Override
 	public void onConfirmDeleteItemStoreButtonClick(StoreItemDTO storeitem) {
-		
 		storeModel.deleteStoreItem(storeitem);
 		view.populateListView(storeModel.getStoreItems());
 	}
 	
 	@Override
 	public void onConfirmAddStoreItemButtonClick(StoreItemDTO storeitem) {
-		//storeitem = storeModel.getStoreItem(1);
 		storeModel.createStoreItem(storeitem);
 		view.populateListView(storeModel.getStoreItems());
 	}
 
 	@Override
 	public void onStoreItemListViewCreated() {
-		view.populateListView(storeModel.getStoreItems());
-		
+		view.populateListView(storeModel.getStoreItems());	
 	}
 	
 
