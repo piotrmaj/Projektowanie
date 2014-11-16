@@ -37,10 +37,11 @@ public class AddEditStoreItemDialog extends JDialog {
 
 	/**
 	 * Create the dialog.
+	 * @param storeItemListViewPresenter 
 	 */
-	public AddEditStoreItemDialog(List<ProductDTO> list) {
+	public AddEditStoreItemDialog(List<ProductDTO> list, final StoreItemListViewPresenter presenter) {
 		
-		presenter = new StoreItemListViewPresenter(this);
+		this.presenter = presenter;
 		this.productDTO = list;
 		
 
@@ -146,9 +147,7 @@ public class AddEditStoreItemDialog extends JDialog {
 							presenter.onConfirmEditItemStoreButtonClick(returnItem);
 						}else{
 							presenter.onConfirmAddStoreItemButtonClick(returnItem);
-						}
-						setVisible(false);
-						
+						}						
 					}
 				});
 				okButton.setActionCommand("OK");

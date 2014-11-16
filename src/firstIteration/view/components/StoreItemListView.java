@@ -27,16 +27,16 @@ public class StoreItemListView extends JFrame implements IStoreItemListView {
 
 	private IStoreItemListViewPresenter presenter;
 	private JTable table;
-    private List<StoreItemDTO> items;
-	Object[][] data;
+    private List<StoreItemDTO> storeItems;
+	Object[][] tableData;
 
 	/**
 	 * Create the frame.
 	 */
-	public StoreItemListView(List<StoreItemDTO> items) {
+	public StoreItemListView(final List<StoreItemDTO> items) {
 
 		presenter = new StoreItemListViewPresenter(this);
-        this.items = items;
+        this.storeItems = items;
 
 		setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
 		setBounds(100, 100, 450, 300);
@@ -107,8 +107,12 @@ public class StoreItemListView extends JFrame implements IStoreItemListView {
 		JButton btnNewButton_4 = new JButton("Edytuj");
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				int id =2;
-				presenter.onEditItemStoreButtonClick(id);
+				Object selectedObject = null;
+				int selectedRowIndex = table.getSelectedRow();
+				if(selectedRowIndex != -1) {
+					selectedObject = (Object) table.getModel().getValueAt(selectedRowIndex, 0);
+				}
+				presenter.onEditItemStoreButtonClick((int)selectedObject);
 			}
 		});
 		btnNewButton_4.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -126,7 +130,6 @@ public class StoreItemListView extends JFrame implements IStoreItemListView {
 					selectedObject = (Object) table.getModel().getValueAt(selectedRowIndex, 0);
 				}
 				presenter.onDeleteItemStoreButtonClick((int)selectedObject);
-				
 			}
 		});
 		btnNewButton_5.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -193,7 +196,7 @@ public class StoreItemListView extends JFrame implements IStoreItemListView {
 	public void ShowReservreStoreItemDialog() {
         int selectedRow = table.getSelectedRow();
         if(selectedRow >= 0) {
-            StoreItemDTO storeItemDTO = items.get(selectedRow - 1);
+            StoreItemDTO storeItemDTO = storeItems.get(selectedRow - 1);
             ReserveStoreItemDialog reserveStoreItemDialog = new ReserveStoreItemDialog(storeItemDTO);
             reserveStoreItemDialog.setVisible(true);
         }

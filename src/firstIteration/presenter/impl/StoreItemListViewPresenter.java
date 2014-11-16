@@ -67,17 +67,21 @@ public class StoreItemListViewPresenter implements IStoreItemListViewPresenter {
 
 	@Override
 	public void onAddItemStoreButtonlClick() {
-		this.addEditStoreItemDialog = new AddEditStoreItemDialog(productModel.getProducts());
+		this.addEditStoreItemDialog = new AddEditStoreItemDialog(productModel.getProducts(), this);
 		addEditStoreItemDialog.setVisible(true);
+	}
+	
+	@Override
+	public void onConfirmAddStoreItemButtonClick(StoreItemDTO storeitem) {
+		storeModel.createStoreItem(storeitem);
+		view.populateListView(storeModel.getStoreItems());
+		addEditStoreItemDialog.setVisible(false);
 	}
 
 	@Override
 	public void onEditItemStoreButtonClick(int id) {
-		this.addEditStoreItemDialog = new AddEditStoreItemDialog(productModel.getProducts());
-		StoreItemDTO storeItem = storeModel.getStoreItem(id);
-		System.out.println(id);
-		System.out.println(storeItem.getId());
-		this.addEditStoreItemDialog.setStoreItem(storeItem);
+		this.addEditStoreItemDialog = new AddEditStoreItemDialog(productModel.getProducts(), this);
+		this.addEditStoreItemDialog.setStoreItem(storeModel.getStoreItem(id));
 		addEditStoreItemDialog.setVisible(true);
 	}
 	
@@ -85,28 +89,23 @@ public class StoreItemListViewPresenter implements IStoreItemListViewPresenter {
 	public void onConfirmEditItemStoreButtonClick(StoreItemDTO storeItem) {
 		storeModel.updateStoreItem(storeItem);
 		view.populateListView(storeModel.getStoreItems());
+		addEditStoreItemDialog.setVisible(false);
 	}
 
 	@Override
 	public void onDeleteItemStoreButtonClick(int id) {
 		StoreItemDTO storeItem = storeModel.getStoreItem(id);
-		this.deleteStoreItemDialog = new DeleteStoreItemDialog(storeItem);
+		this.deleteStoreItemDialog = new DeleteStoreItemDialog(storeItem, this);
 		deleteStoreItemDialog.setVisible(true);
-
 	}
 	
 	@Override
 	public void onConfirmDeleteItemStoreButtonClick(StoreItemDTO storeitem) {
 		storeModel.deleteStoreItem(storeitem);
 		view.populateListView(storeModel.getStoreItems());
+		deleteStoreItemDialog.setVisible(false);
 	}
 	
-	@Override
-	public void onConfirmAddStoreItemButtonClick(StoreItemDTO storeitem) {
-		storeModel.createStoreItem(storeitem);
-		view.populateListView(storeModel.getStoreItems());
-	}
-
 	@Override
 	public void onStoreItemListViewCreated() {
 		view.populateListView(storeModel.getStoreItems());	

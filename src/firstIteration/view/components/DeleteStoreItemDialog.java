@@ -18,6 +18,7 @@ import javax.swing.border.EmptyBorder;
 import dto.StoreItemDTO;
 import firstIteration.presenter.IStoreItemListViewPresenter;
 import firstIteration.presenter.impl.StoreItemListViewPresenter;
+import firstIteration.view.IStoreItemListView;
 
 public class DeleteStoreItemDialog extends JDialog {
 
@@ -27,10 +28,11 @@ public class DeleteStoreItemDialog extends JDialog {
 
 	/**
 	 * Create the dialog.
+	 * @param storeItemListViewPresenter 
 	 */
-	public DeleteStoreItemDialog(final StoreItemDTO storeitem) {
+	public DeleteStoreItemDialog(final StoreItemDTO storeitem, final StoreItemListViewPresenter presenter) {
 		
-		presenter = new StoreItemListViewPresenter(this);
+		this.presenter = presenter;
 		this.storeitem = storeitem;
 		
 		setBounds(100, 100, 289, 236);
