@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import dto.ProductDTO;
 import dto.StoreItemDTO;
 import firstIteration.presenter.IStoreItemListViewPresenter;
 import firstIteration.presenter.impl.StoreItemListViewPresenter;
@@ -23,16 +24,18 @@ public class DeleteStoreItemDialog extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	protected  StoreItemDTO storeitem;
+	private ProductDTO productItem;
 	private IStoreItemListViewPresenter presenter;
 
 	/**
 	 * Create the dialog.
 	 * @param storeItemListViewPresenter 
 	 */
-	public DeleteStoreItemDialog(IStoreItemListViewPresenter storeItemListViewPresenter, final StoreItemDTO storeitem) {
+	public DeleteStoreItemDialog(IStoreItemListViewPresenter storeItemListViewPresenter, final StoreItemDTO storeitem, ProductDTO product) {
 		
 		presenter = storeItemListViewPresenter;
 		this.storeitem = storeitem;
+		this.productItem = product;
 		
 		setBounds(100, 100, 289, 236);
 		getContentPane().setLayout(new BorderLayout());
@@ -73,7 +76,8 @@ public class DeleteStoreItemDialog extends JDialog {
 				panel.add(label, gbc_label);
 			}
 			{
-				JLabel label = new JLabel("New label");
+				
+				JLabel label = new JLabel(productItem.getName());
 				GridBagConstraints gbc_label = new GridBagConstraints();
 				gbc_label.insets = new Insets(0, 0, 5, 0);
 				gbc_label.gridx = 1;

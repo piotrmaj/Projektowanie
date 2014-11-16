@@ -1,5 +1,6 @@
 package firstIteration.presenter.impl;
 
+import dto.ProductDTO;
 import dto.StoreItemDTO;
 import firstIteration.model.impl.ImplIProductModel;
 import firstIteration.model.impl.ImplIStoreItemModel;
@@ -89,7 +90,8 @@ public class StoreItemListViewPresenter implements IStoreItemListViewPresenter {
 	@Override
 	public void onDeleteItemStoreButtonClick(int id) {
 		StoreItemDTO storeItem = storeModel.getStoreItem(id);
-		this.deleteStoreItemDialog = new DeleteStoreItemDialog(this, storeItem);
+		ProductDTO productItem = productModel.getProduct(storeItem.getProductId());
+		this.deleteStoreItemDialog = new DeleteStoreItemDialog(this, storeItem, productItem);
 		deleteStoreItemDialog.setVisible(true);
 
 	}
