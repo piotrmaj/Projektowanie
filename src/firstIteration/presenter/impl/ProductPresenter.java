@@ -29,7 +29,7 @@ public class ProductPresenter implements IProductPresenter {
 
 	@Override
 	public void onCreateProductClick() {
-		this.addEditProductDialog = new AddEditProductDialog();
+		this.addEditProductDialog = new AddEditProductDialog(this);
 	//	addEditProductDialog.setVisible(true);	
 	}
 	
@@ -43,14 +43,16 @@ public class ProductPresenter implements IProductPresenter {
 	public void onEditProductClick(int id) {
 		// TODO Auto-generated method stub
 		
-		this.addEditProductDialog = new AddEditProductDialog();
+		this.addEditProductDialog = new AddEditProductDialog(this);
 		addEditProductDialog.setProduct(productModel.getProduct(id));
+		addEditProductDialog.setVisible(true);
 		
 	}
 
 	@Override
 	public void onDeleteProductClick(int id) {
-		this.deleteProductDialog = new DeleteProductDialog(productModel.getProduct(id));
+		this.deleteProductDialog = new DeleteProductDialog(this);
+		deleteProductDialog.setProduct(productModel.getProduct(id));
 	}
 
 
@@ -62,7 +64,11 @@ public class ProductPresenter implements IProductPresenter {
 	@Override
 	public void onConfirmDeleteProductClick(int id) {
 		productModel.deleteProduct(id);
-		
+	}
+
+	@Override
+	public void onViewCreated() {
+		view.populateListView(productModel.getProducts());
 	}
 
 	

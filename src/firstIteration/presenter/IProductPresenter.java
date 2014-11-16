@@ -16,4 +16,6 @@ public interface IProductPresenter {
 	void onConfirmEditProductClick(ProductDTO product);
 
 	void onConfirmDeleteProductClick(int id);
+
+	void onViewCreated();
 }

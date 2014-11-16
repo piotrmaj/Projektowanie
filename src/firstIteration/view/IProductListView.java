@@ -1,10 +1,11 @@
 package firstIteration.view;
 
+import java.util.List;
+
+import dto.ProductDTO;
+import dto.StoreItemDTO;
+
 public interface IProductListView {
 	
-		void ShowCreateProductDialog();
-		
-		void ShowEditProductDialog();
-		
-		void ShowDeleteProductDialog();
+		public void populateListView(List<ProductDTO> items);
 }
