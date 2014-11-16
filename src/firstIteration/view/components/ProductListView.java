@@ -54,6 +54,7 @@ public class ProductListView extends JFrame implements IProductListView {
 		
 		table = new JTable();
 		table.setRowSelectionAllowed(true);
+	
 		contentPane.add(table, BorderLayout.CENTER);
 		
 		JPanel panel = new JPanel();
@@ -114,7 +115,6 @@ public class ProductListView extends JFrame implements IProductListView {
 		
 		private List<ProductDTO> items;
 		private String[] columnNames = { "Id", "Name", "Unit", "Description" };
-
 		
 		public ProductTableModel(List<ProductDTO> items) {
 			this.items = items;
