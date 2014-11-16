@@ -30,19 +30,19 @@ public class ProductPresenter implements IProductPresenter {
 	@Override
 	public void onCreateProductClick() {
 		this.addEditProductDialog = new AddEditProductDialog(this);
-	//	addEditProductDialog.setVisible(true);	
+		addEditProductDialog.setVisible(true);	
+		
 	}
 	
 	@Override
 	public void onConfirmCreateProductClick(ProductDTO product) {
 		productModel.createProduct(product);
-		
+		view.populateListView(productModel.getProducts());
 	}
 
 	@Override
 	public void onEditProductClick(int id) {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub		
 		this.addEditProductDialog = new AddEditProductDialog(this);
 		addEditProductDialog.setProduct(productModel.getProduct(id));
 		addEditProductDialog.setVisible(true);
@@ -53,17 +53,20 @@ public class ProductPresenter implements IProductPresenter {
 	public void onDeleteProductClick(int id) {
 		this.deleteProductDialog = new DeleteProductDialog(this);
 		deleteProductDialog.setProduct(productModel.getProduct(id));
+		deleteProductDialog.setVisible(true);
 	}
 
 
 	@Override
 	public void onConfirmEditProductClick(ProductDTO product) {
-		productModel.updateProduct(product);		
+		productModel.updateProduct(product);	
+		view.populateListView(productModel.getProducts());
 	}
 
 	@Override
 	public void onConfirmDeleteProductClick(int id) {
 		productModel.deleteProduct(id);
+		view.populateListView(productModel.getProducts());
 	}
 
 	@Override

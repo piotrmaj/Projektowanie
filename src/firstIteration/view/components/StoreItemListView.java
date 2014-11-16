@@ -1,24 +1,17 @@
 package firstIteration.view.components;
 
-import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.Dialog.ModalExclusionType;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.List;
-
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JTable;
-import javax.swing.border.EmptyBorder;
-
 import dto.StoreItemDTO;
 import firstIteration.presenter.IStoreItemListViewPresenter;
 import firstIteration.presenter.impl.StoreItemListViewPresenter;
 import firstIteration.view.IStoreItemListView;
+
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import java.awt.*;
+import java.awt.Dialog.ModalExclusionType;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.List;
 
 public class StoreItemListView extends JFrame implements IStoreItemListView {
 
@@ -26,6 +19,7 @@ public class StoreItemListView extends JFrame implements IStoreItemListView {
 
 	private IStoreItemListViewPresenter presenter;
 	private JTable table;
+    private List<StoreItemDTO> items;
 	Object[][] data;
 
 	/**
@@ -34,6 +28,7 @@ public class StoreItemListView extends JFrame implements IStoreItemListView {
 	public StoreItemListView(List<StoreItemDTO> items) {
 
 		presenter = new StoreItemListViewPresenter(this);
+        this.items = items;
 
 		setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
 		setBounds(100, 100, 450, 300);
@@ -189,9 +184,12 @@ public class StoreItemListView extends JFrame implements IStoreItemListView {
 
 	@Override
 	public void ShowReservreStoreItemDialog() {
-		ReserveStoreItemDialog reserveStoreItemDialog = new ReserveStoreItemDialog();
-		reserveStoreItemDialog.setVisible(true);
-
+        int selectedRow = table.getSelectedRow();
+        if(selectedRow >= 0) {
+            StoreItemDTO storeItemDTO = items.get(selectedRow - 1);
+            ReserveStoreItemDialog reserveStoreItemDialog = new ReserveStoreItemDialog(storeItemDTO);
+            reserveStoreItemDialog.setVisible(true);
+        }
 	}
 
 	@Override
