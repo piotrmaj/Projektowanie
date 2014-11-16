@@ -15,14 +15,24 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import dto.StoreItemDTO;
+import firstIteration.presenter.IStoreItemListViewPresenter;
+import firstIteration.presenter.impl.StoreItemListViewPresenter;
+
 public class DeleteStoreItemDialog extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
+	protected  StoreItemDTO storeitem;
+	private IStoreItemListViewPresenter presenter;
 
 	/**
 	 * Create the dialog.
 	 */
-	public DeleteStoreItemDialog() {
+	public DeleteStoreItemDialog(final StoreItemDTO storeitem) {
+		
+		presenter = new StoreItemListViewPresenter(this);
+		this.storeitem = storeitem;
+		
 		setBounds(100, 100, 289, 236);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -168,7 +178,7 @@ public class DeleteStoreItemDialog extends JDialog {
 				JButton cancelButton = new JButton("Usu\u0144");
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
-						setVisible(false);
+						presenter.onConfirmDeleteItemStoreButtonClick(storeitem);
 					}
 				});
 				cancelButton.setActionCommand("Cancel");

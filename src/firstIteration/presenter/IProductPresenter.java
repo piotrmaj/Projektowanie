@@ -1,10 +1,19 @@
 package firstIteration.presenter;
 
+import dto.ProductDTO;
+import dto.StoreItemDTO;
+
 public interface IProductPresenter {
 	
 	void onCreateProductClick();
 
-	void onEditProductClick();
+	void onEditProductClick(int id);
 
-	void onDeleteProductClick();
+	void onDeleteProductClick(int id);
+	
+	void onConfirmCreateProductClick(ProductDTO product);
+
+	void onConfirmEditProductClick(ProductDTO product);
+
+	void onConfirmDeleteProductClick(int id);
 }

@@ -19,15 +19,24 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import dto.StoreItemDTO;
+
+import firstIteration.presenter.IStoreItemListViewPresenter;
+import firstIteration.presenter.impl.StoreItemListViewPresenter;
+
 public class ConfirmSendingStoreItemDialog extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private JTextField textField;
+	private IStoreItemListViewPresenter presenter;
+	private StoreItemDTO storeitem;
 
 	/**
 	 * Create the dialog.
 	 */
-	public ConfirmSendingStoreItemDialog() {
+	public ConfirmSendingStoreItemDialog(StoreItemDTO storeItem) {
+		presenter = new StoreItemListViewPresenter(this);
+		this.storeitem = storeItem;
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));

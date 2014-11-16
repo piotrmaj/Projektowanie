@@ -54,7 +54,8 @@ public class StoreItemListView extends JFrame implements IStoreItemListView {
 		btnNewButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				presenter.onConfirmSendButtonClick();
+				int id =1;
+				presenter.onConfirmSendButtonClick(id);
 			}
 		});
 		verticalBox.add(btnNewButton);
@@ -103,7 +104,8 @@ public class StoreItemListView extends JFrame implements IStoreItemListView {
 		JButton btnNewButton_4 = new JButton("Edytuj");
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				presenter.onEditItemStoreButtonClick();
+				int id =2;
+				presenter.onEditItemStoreButtonClick(id);
 			}
 		});
 		btnNewButton_4.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -115,8 +117,13 @@ public class StoreItemListView extends JFrame implements IStoreItemListView {
 		JButton btnNewButton_5 = new JButton("Usu\u0144");
 		btnNewButton_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				presenter.onDeleteItemStoreButtonClick();
-				;
+				Object selectedObject = null;
+				int selectedRowIndex = table.getSelectedRow();
+				if(selectedRowIndex != -1) {
+					selectedObject = (Object) table.getModel().getValueAt(selectedRowIndex, 0);
+				}
+				presenter.onDeleteItemStoreButtonClick((int)selectedObject);
+				
 			}
 		});
 		btnNewButton_5.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -151,8 +158,8 @@ public class StoreItemListView extends JFrame implements IStoreItemListView {
 	@Override
 	public void ShowConfirmSendingDialog() {
 
-		ConfirmSendingStoreItemDialog confirmDialog = new ConfirmSendingStoreItemDialog();
-		confirmDialog.setVisible(true);
+	//	ConfirmSendingStoreItemDialog confirmDialog = new ConfirmSendingStoreItemDialog();
+	//	confirmDialog.setVisible(true);
 
 	}
 
@@ -167,16 +174,16 @@ public class StoreItemListView extends JFrame implements IStoreItemListView {
 	@Override
 	public void ShowEditItemDialog() {
 
-		AddEditStoreItemDialog addEditStoreItemDialog = new AddEditStoreItemDialog();
-		addEditStoreItemDialog.setVisible(true);
+	//	AddEditStoreItemDialog addEditStoreItemDialog = new AddEditStoreItemDialog();
+	//	addEditStoreItemDialog.setVisible(true);
 
 	}
 
 	@Override
 	public void ShowDeleteStoreItemDialog() {
 
-		DeleteStoreItemDialog deleteStoreItemDialog = new DeleteStoreItemDialog();
-		deleteStoreItemDialog.setVisible(true);
+	//	DeleteStoreItemDialog deleteStoreItemDialog = new DeleteStoreItemDialog();
+	//	deleteStoreItemDialog.setVisible(true);
 
 	}
 

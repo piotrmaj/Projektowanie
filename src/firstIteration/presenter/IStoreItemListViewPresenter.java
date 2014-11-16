@@ -1,16 +1,26 @@
 package firstIteration.presenter;
 
+import dto.StoreItemDTO;
+
 public interface IStoreItemListViewPresenter {
 
-	void onConfirmSendButtonClick();
+void onConfirmSendButtonClick(int id);
 	
 	void onReserveButtonClick();
 	
 	void onReleaseButtonClick();
 	
 	void onAddItemStoreButtonlClick();
+
+	void onDeleteItemStoreButtonClick(int id);
 	
-	void onEditItemStoreButtonClick();
+	void onConfirmDeleteItemStoreButtonClick(StoreItemDTO storeitem);
 	
-	void onDeleteItemStoreButtonClick();
+	void onConfirmAddStoreItemButtonClick(StoreItemDTO storeitem);
+
+	void onUpdateConfirmSendButtonClick(int count, StoreItemDTO storeItemFromView);
+
+	void onEditItemStoreButtonClick(int id);
+
+	void onConfirmEditItemStoreButtonClick(StoreItemDTO storeItem);
 }

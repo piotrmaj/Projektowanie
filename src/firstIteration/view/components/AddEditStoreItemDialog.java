@@ -7,6 +7,7 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -16,6 +17,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+
+import dto.StoreItemDTO;
+import dto.ProductDTO;
 
 import firstIteration.presenter.IStoreItemListViewPresenter;
 import firstIteration.presenter.impl.StoreItemListViewPresenter;
@@ -27,14 +31,18 @@ public class AddEditStoreItemDialog extends JDialog {
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private IStoreItemListViewPresenter presenter;
+	private StoreItemDTO storeitem;
+	//Do wyswietlania listy produktów w combobox
+	private List<ProductDTO> productDTO;
 
 	/**
 	 * Create the dialog.
 	 */
-	public AddEditStoreItemDialog() {
+	public AddEditStoreItemDialog(List<ProductDTO> list) {
 		
 		presenter = new StoreItemListViewPresenter(this);
-
+		this.productDTO = list;
+		
 
 		setBounds(100, 100, 324, 208);
 		getContentPane().setLayout(new BorderLayout());
@@ -125,7 +133,7 @@ public class AddEditStoreItemDialog extends JDialog {
 				JButton okButton = new JButton("zapisz");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
-						setVisible(false);
+						presenter.onConfirmAddStoreItemButtonClick(storeitem);
 					}
 				});
 				okButton.setActionCommand("OK");
@@ -143,6 +151,11 @@ public class AddEditStoreItemDialog extends JDialog {
 				buttonPane.add(cancelButton);
 			}
 		}
+	}
+
+	public void setStoreItem(StoreItemDTO storeItem) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	
