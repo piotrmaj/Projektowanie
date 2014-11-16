@@ -180,6 +180,7 @@ public class DeleteStoreItemDialog extends JDialog {
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
 						presenter.onConfirmDeleteItemStoreButtonClick(storeitem);
+						setVisible(false);
 					}
 				});
 				cancelButton.setActionCommand("Cancel");
