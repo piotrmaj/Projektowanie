@@ -3,7 +3,6 @@ package firstIteration.view.components;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dialog.ModalExclusionType;
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -125,8 +124,9 @@ public class StoreItemListView extends JFrame implements IStoreItemListView {
 
 		String[] columnNames = { "Id", "Name", "Count", "Available", "Unit",
 				"Price", "Description" };
-		data = new Object[items.size()][7];
-		int i = 0;
+		data = new Object[items.size() + 1][columnNames.length];
+		data[0] = columnNames;
+		int i = 1;
 		for (StoreItemDTO item : items) {
 			data[i][0] = item.getId();
 			data[i][1] = item.getName();
@@ -138,7 +138,6 @@ public class StoreItemListView extends JFrame implements IStoreItemListView {
 			i++;
 		}
 
-		//table = new JTable(data, columnNames);
 		table = new JTable(data, columnNames) {
 	        private static final long serialVersionUID = 1L;
 

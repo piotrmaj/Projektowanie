@@ -1,3 +1,7 @@
 iwo.ldb
 .metadata/
 bin/
+*.class
+config/database-properties.xml
+config/database-properties.xml
+config/database-properties.xml
