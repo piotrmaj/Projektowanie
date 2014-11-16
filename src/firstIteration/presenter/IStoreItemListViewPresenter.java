@@ -23,4 +23,6 @@ void onConfirmSendButtonClick(int id);
 	void onEditItemStoreButtonClick(int id);
 
 	void onConfirmEditItemStoreButtonClick(StoreItemDTO storeItem);
+	
+	void onStoreItemListViewCreated();
 }

@@ -29,10 +29,13 @@ public class AddEditStoreItemDialog extends JDialog {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
+	private JComboBox<ProductDTO> comboBox;
 	private IStoreItemListViewPresenter presenter;
 	private StoreItemDTO storeitem;
 	//Do wyswietlania listy produktów w combobox
 	private List<ProductDTO> productDTO;
+	private StoreItemDTO storeItem;
+	private boolean edit = false;;
 
 	/**
 	 * Create the dialog.
@@ -63,12 +66,15 @@ public class AddEditStoreItemDialog extends JDialog {
 			contentPanel.add(lblNewLabel, gbc_lblNewLabel);
 		}
 		{
-			JComboBox comboBox = new JComboBox();
+			 comboBox = new JComboBox<ProductDTO>();
+			 for(int i = 0 ; i < productDTO.size(); i++){
+				 comboBox.addItem(productDTO.get(i));
+			 }
 			GridBagConstraints gbc_comboBox = new GridBagConstraints();
 			gbc_comboBox.insets = new Insets(0, 0, 5, 0);
 			gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;
 			gbc_comboBox.gridx = 1;
-			gbc_comboBox.gridy = 0;
+			gbc_comboBox.gridy = 0;			
 			contentPanel.add(comboBox, gbc_comboBox);
 		}
 		{
@@ -132,7 +138,19 @@ public class AddEditStoreItemDialog extends JDialog {
 				JButton okButton = new JButton("zapisz");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
-						presenter.onConfirmAddStoreItemButtonClick(storeitem);
+						StoreItemDTO returnItem = new StoreItemDTO();
+						returnItem.setName(textField.getText());
+						returnItem.setPrice(Integer.getInteger(textField_1.getText()));
+						returnItem.setCount(Integer.getInteger(textField_2.getText()));
+						returnItem.setProductId(((ProductDTO)comboBox.getSelectedItem()).getId());
+						if(edit){
+							returnItem.setId(storeitem.getId());
+							presenter.onConfirmEditItemStoreButtonClick(returnItem);
+						}else{
+							presenter.onConfirmAddStoreItemButtonClick(returnItem);
+						}
+						setVisible(false);
+						
 					}
 				});
 				okButton.setActionCommand("OK");
@@ -153,7 +171,11 @@ public class AddEditStoreItemDialog extends JDialog {
 	}
 
 	public void setStoreItem(StoreItemDTO storeItem) {
-		// TODO Auto-generated method stub
+		this.storeItem = storeItem;
+		edit  = true;
+		textField.setText(storeItem.getName());
+		textField_1.setText(""+ storeItem.getPrice());
+		textField_2.setText("" + storeItem.getCount() );
 		
 	}
 

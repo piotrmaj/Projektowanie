@@ -54,13 +54,13 @@ public class StoreItemListViewPresenter implements IStoreItemListViewPresenter {
 
 	@Override
 	public void onReserveButtonClick() {
-		view.ShowReservreStoreItemDialog();
+		//TODO wyiwtlanie okna dialogowo z rezerwacja
 
 	}
 	
 	@Override
 	public void onReleaseButtonClick() {
-		view.ShowReleaseStoreItemDialog();
+		//TODO okno dialogowo z zwolnieniem rezerwacji
 		
 	}
 
@@ -80,7 +80,8 @@ public class StoreItemListViewPresenter implements IStoreItemListViewPresenter {
 	
 	@Override
 	public void onConfirmEditItemStoreButtonClick(StoreItemDTO storeItem) {
-		storeModel.updateStoreItem(storeItem);		
+		storeModel.updateStoreItem(storeItem);	
+		view.populateListView(storeModel.getStoreItems());
 	}
 
 	@Override
@@ -97,12 +98,20 @@ public class StoreItemListViewPresenter implements IStoreItemListViewPresenter {
 	public void onConfirmDeleteItemStoreButtonClick(StoreItemDTO storeitem) {
 		
 		storeModel.deleteStoreItem(storeitem);
+		view.populateListView(storeModel.getStoreItems());
 	}
 	
 	@Override
 	public void onConfirmAddStoreItemButtonClick(StoreItemDTO storeitem) {
 		//storeitem = storeModel.getStoreItem(1);
 		storeModel.createStoreItem(storeitem);
+		view.populateListView(storeModel.getStoreItems());
+	}
+
+	@Override
+	public void onStoreItemListViewCreated() {
+		view.populateListView(storeModel.getStoreItems());
+		
 	}
 	
 

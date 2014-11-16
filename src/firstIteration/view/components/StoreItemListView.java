@@ -14,6 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.AbstractTableModel;
 
 import dto.StoreItemDTO;
 import firstIteration.presenter.IStoreItemListViewPresenter;
@@ -26,7 +27,7 @@ public class StoreItemListView extends JFrame implements IStoreItemListView {
 
 	private IStoreItemListViewPresenter presenter;
 	private JTable table;
-	Object[][] data;
+	
 
 	/**
 	 * Create the frame.
@@ -128,76 +129,67 @@ public class StoreItemListView extends JFrame implements IStoreItemListView {
 		});
 		btnNewButton_5.setAlignmentX(Component.CENTER_ALIGNMENT);
 		verticalBox.add(btnNewButton_5);
+		table = new JTable();
+		contentPane.add(table, BorderLayout.CENTER);
+		
+		presenter.onStoreItemListViewCreated();
+	}
+	
 
+	@Override
+	public void populateListView(List<StoreItemDTO> items) {
+		StoreItemListViewTableModel model = new StoreItemListViewTableModel(items);
+		table.setModel(model);
+		
+		// TODO Auto-generated method stub
+		
+	}
+	
+	class StoreItemListViewTableModel extends AbstractTableModel{
+		
+		private Object[][] data;
 		String[] columnNames = { "Id", "Name", "Count", "Available", "Unit",
 				"Price", "Description" };
-		data = new Object[items.size() + 1][columnNames.length];
-		data[0] = columnNames;
-		int i = 1;
-		for (StoreItemDTO item : items) {
-			data[i][0] = item.getId();
-			data[i][1] = item.getName();
-			data[i][2] = item.getCount();
-			data[i][3] = item.getAvailable();
-			data[i][4] = item.getUnit();
-			data[i][5] = item.getPrice();
-			data[i][6] = item.getDescription();
-			i++;
+		
+		public StoreItemListViewTableModel(List<StoreItemDTO> items){
+			
+			data = new Object[items.size() + 1][columnNames.length];
+			data[0] = columnNames;
+			int i = 1;
+			for (StoreItemDTO item : items) {
+				data[i][0] = item.getId();
+				data[i][1] = item.getName();
+				data[i][2] = item.getCount();
+				data[i][3] = item.getAvailable();
+				data[i][4] = item.getUnit();
+				data[i][5] = item.getPrice();
+				data[i][6] = item.getDescription();
+				i++;
+			}
+			
 		}
 
-		table = new JTable(data, columnNames) {
-	        private static final long serialVersionUID = 1L;
+		@Override
+		public int getColumnCount() {
+			
+			return columnNames.length;
+		}
 
-	        public boolean isCellEditable(int row, int column) {                
-	                return false;               
-	        };
-	    };
-		contentPane.add(table, BorderLayout.CENTER);
+		@Override
+		public int getRowCount() {
+			
+			return data.length;
+		}
+
+		@Override
+		public Object getValueAt(int arg0, int arg1) {
+		
+			return data[arg0][arg1];
+		}
+		
 	}
 
-	@Override
-	public void ShowConfirmSendingDialog() {
+	
 
-	//	ConfirmSendingStoreItemDialog confirmDialog = new ConfirmSendingStoreItemDialog();
-	//	confirmDialog.setVisible(true);
-
-	}
-
-	@Override
-	public void ShowAddItemDialog() {
-
-	//	AddEditStoreItemDialog addEditStoreItemDialog = new AddEditStoreItemDialog();
-	//	presenter.addEditStoreItemDialog.setVisible(true);
-
-	}
-
-	@Override
-	public void ShowEditItemDialog() {
-
-	//	AddEditStoreItemDialog addEditStoreItemDialog = new AddEditStoreItemDialog();
-	//	addEditStoreItemDialog.setVisible(true);
-
-	}
-
-	@Override
-	public void ShowDeleteStoreItemDialog() {
-
-	//	DeleteStoreItemDialog deleteStoreItemDialog = new DeleteStoreItemDialog();
-	//	deleteStoreItemDialog.setVisible(true);
-
-	}
-
-	@Override
-	public void ShowReservreStoreItemDialog() {
-		ReserveStoreItemDialog reserveStoreItemDialog = new ReserveStoreItemDialog();
-		reserveStoreItemDialog.setVisible(true);
-
-	}
-
-	@Override
-	public void ShowReleaseStoreItemDialog() {
-		ReleaseStoreItemReservationDialog releaseStoreItemReservationDialog = new ReleaseStoreItemReservationDialog();
-		releaseStoreItemReservationDialog.setVisible(true);
-
-	}
+	
 }
