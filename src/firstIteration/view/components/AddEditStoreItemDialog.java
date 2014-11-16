@@ -19,7 +19,6 @@ import javax.swing.SwingConstants;
 
 import dto.StoreItemDTO;
 import dto.ProductDTO;
-
 import firstIteration.presenter.IStoreItemListViewPresenter;
 import firstIteration.presenter.impl.StoreItemListViewPresenter;
 
@@ -41,7 +40,6 @@ public class AddEditStoreItemDialog extends JDialog {
 		
 		presenter = new StoreItemListViewPresenter(this);
 		this.productDTO = list;
-		
 
 		setBounds(100, 100, 324, 208);
 		getContentPane().setLayout(new BorderLayout());
@@ -153,8 +151,10 @@ public class AddEditStoreItemDialog extends JDialog {
 	}
 
 	public void setStoreItem(StoreItemDTO storeItem) {
-		// TODO Auto-generated method stub
-		
+		this.storeitem = storeItem;
+		textField.setText(storeitem.getName());
+		textField_1.setText(Float.toString(storeitem.getPrice()));
+		textField_2.setText(Integer.toString(storeitem.getCount()));
 	}
 
 	

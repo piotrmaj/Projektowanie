@@ -56,7 +56,7 @@ public class DeleteStoreItemDialog extends JDialog {
 				panel.add(label, gbc_label);
 			}
 			{
-				JLabel label = new JLabel("New label");
+				JLabel label = new JLabel(Integer.toString(storeitem.getId()));
 				GridBagConstraints gbc_label = new GridBagConstraints();
 				gbc_label.insets = new Insets(0, 0, 5, 0);
 				gbc_label.gridx = 1;
@@ -88,7 +88,7 @@ public class DeleteStoreItemDialog extends JDialog {
 				panel.add(label, gbc_label);
 			}
 			{
-				JLabel label = new JLabel("New label");
+				JLabel label = new JLabel(storeitem.getName());
 				GridBagConstraints gbc_label = new GridBagConstraints();
 				gbc_label.insets = new Insets(0, 0, 5, 0);
 				gbc_label.gridx = 1;
@@ -104,7 +104,7 @@ public class DeleteStoreItemDialog extends JDialog {
 				panel.add(lblIloJednostekDo, gbc_lblIloJednostekDo);
 			}
 			{
-				JLabel label = new JLabel("New label");
+				JLabel label = new JLabel(Integer.toString(storeitem.getAvailable()));
 				GridBagConstraints gbc_label = new GridBagConstraints();
 				gbc_label.insets = new Insets(0, 0, 5, 0);
 				gbc_label.gridx = 1;
@@ -120,7 +120,7 @@ public class DeleteStoreItemDialog extends JDialog {
 				panel.add(label, gbc_label);
 			}
 			{
-				JLabel label = new JLabel("New label");
+				JLabel label = new JLabel(Float.toString(storeitem.getPrice()));
 				GridBagConstraints gbc_label = new GridBagConstraints();
 				gbc_label.insets = new Insets(0, 0, 5, 0);
 				gbc_label.gridx = 1;
@@ -136,7 +136,7 @@ public class DeleteStoreItemDialog extends JDialog {
 				panel.add(label, gbc_label);
 			}
 			{
-				JLabel label = new JLabel("New label");
+				JLabel label = new JLabel(storeitem.getUnit());
 				GridBagConstraints gbc_label = new GridBagConstraints();
 				gbc_label.insets = new Insets(0, 0, 5, 0);
 				gbc_label.gridx = 1;
@@ -152,7 +152,7 @@ public class DeleteStoreItemDialog extends JDialog {
 				panel.add(lblNewLabel, gbc_lblNewLabel);
 			}
 			{
-				JLabel lblNewLabel_1 = new JLabel("New label");
+				JLabel lblNewLabel_1 = new JLabel(Integer.toString(storeitem.getCount()));
 				GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
 				gbc_lblNewLabel_1.gridx = 1;
 				gbc_lblNewLabel_1.gridy = 6;
