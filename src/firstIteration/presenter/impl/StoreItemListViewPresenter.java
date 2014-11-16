@@ -74,7 +74,10 @@ public class StoreItemListViewPresenter implements IStoreItemListViewPresenter {
 	@Override
 	public void onEditItemStoreButtonClick(int id) {
 		this.addEditStoreItemDialog = new AddEditStoreItemDialog(productModel.getProducts());
-		this.addEditStoreItemDialog.setStoreItem(storeModel.getStoreItem(id));
+		StoreItemDTO storeItem = storeModel.getStoreItem(id);
+		System.out.println(id);
+		System.out.println(storeItem.getId());
+		this.addEditStoreItemDialog.setStoreItem(storeItem);
 		addEditStoreItemDialog.setVisible(true);
 	}
 	
