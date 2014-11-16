@@ -107,7 +107,7 @@ public class StoreItemListView extends JFrame implements IStoreItemListView {
 		JButton btnNewButton_4 = new JButton("Edytuj");
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				int id =2;
+				int id = 2; //TODO podawanie zaznaczone id;
 				presenter.onEditItemStoreButtonClick(id);
 			}
 		});

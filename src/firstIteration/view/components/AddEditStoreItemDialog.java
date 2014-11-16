@@ -37,10 +37,11 @@ public class AddEditStoreItemDialog extends JDialog {
 
 	/**
 	 * Create the dialog.
+	 * @param storeItemListViewPresenter 
 	 */
-	public AddEditStoreItemDialog(List<ProductDTO> list) {
+	public AddEditStoreItemDialog(IStoreItemListViewPresenter storeItemListViewPresenter, List<ProductDTO> list) {
 		
-		presenter = new StoreItemListViewPresenter(this);
+		presenter = storeItemListViewPresenter;
 		this.productDTO = list;
 		
 

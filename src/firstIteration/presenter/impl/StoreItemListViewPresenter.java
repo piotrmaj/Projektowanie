@@ -67,13 +67,13 @@ public class StoreItemListViewPresenter implements IStoreItemListViewPresenter {
 
 	@Override
 	public void onAddItemStoreButtonlClick() {
-		this.addEditStoreItemDialog = new AddEditStoreItemDialog(productModel.getProducts());
+		this.addEditStoreItemDialog = new AddEditStoreItemDialog(this, productModel.getProducts());
 		addEditStoreItemDialog.setVisible(true);
 	}
 
 	@Override
 	public void onEditItemStoreButtonClick(int id) {
-		this.addEditStoreItemDialog = new AddEditStoreItemDialog(productModel.getProducts());
+		this.addEditStoreItemDialog = new AddEditStoreItemDialog(this, productModel.getProducts());
 		StoreItemDTO storeItem = storeModel.getStoreItem(id);
 		System.out.println(id);
 		System.out.println(storeItem.getId());
@@ -90,7 +90,7 @@ public class StoreItemListViewPresenter implements IStoreItemListViewPresenter {
 	@Override
 	public void onDeleteItemStoreButtonClick(int id) {
 		StoreItemDTO storeItem = storeModel.getStoreItem(id);
-		this.deleteStoreItemDialog = new DeleteStoreItemDialog(storeItem);
+		this.deleteStoreItemDialog = new DeleteStoreItemDialog(this, storeItem);
 		deleteStoreItemDialog.setVisible(true);
 
 	}

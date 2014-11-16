@@ -27,10 +27,11 @@ public class DeleteStoreItemDialog extends JDialog {
 
 	/**
 	 * Create the dialog.
+	 * @param storeItemListViewPresenter 
 	 */
-	public DeleteStoreItemDialog(final StoreItemDTO storeitem) {
+	public DeleteStoreItemDialog(IStoreItemListViewPresenter storeItemListViewPresenter, final StoreItemDTO storeitem) {
 		
-		presenter = new StoreItemListViewPresenter(this);
+		presenter = storeItemListViewPresenter;
 		this.storeitem = storeitem;
 		
 		setBounds(100, 100, 289, 236);
