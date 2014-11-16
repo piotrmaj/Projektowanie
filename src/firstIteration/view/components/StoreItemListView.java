@@ -1,6 +1,5 @@
 package firstIteration.view.components;
 
-<<<<<<< HEAD
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dialog.ModalExclusionType;
@@ -17,20 +16,10 @@ import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.AbstractTableModel;
 
-=======
->>>>>>> 876759bd7a1a3c3ede9ab3bcbb1b75ac4d2fd0c0
 import dto.StoreItemDTO;
 import firstIteration.presenter.IStoreItemListViewPresenter;
 import firstIteration.presenter.impl.StoreItemListViewPresenter;
 import firstIteration.view.IStoreItemListView;
-
-import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-import java.awt.*;
-import java.awt.Dialog.ModalExclusionType;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.List;
 
 public class StoreItemListView extends JFrame implements IStoreItemListView {
 
@@ -38,12 +27,8 @@ public class StoreItemListView extends JFrame implements IStoreItemListView {
 
 	private IStoreItemListViewPresenter presenter;
 	private JTable table;
-<<<<<<< HEAD
-	
-=======
     private List<StoreItemDTO> items;
 	Object[][] data;
->>>>>>> 876759bd7a1a3c3ede9ab3bcbb1b75ac4d2fd0c0
 
 	/**
 	 * Create the frame.
@@ -192,7 +177,6 @@ public class StoreItemListView extends JFrame implements IStoreItemListView {
 			return columnNames.length;
 		}
 
-<<<<<<< HEAD
 		@Override
 		public int getRowCount() {
 			
@@ -205,8 +189,7 @@ public class StoreItemListView extends JFrame implements IStoreItemListView {
 			return data[arg0][arg1];
 		}
 		
-=======
-	@Override
+	}
 	public void ShowReservreStoreItemDialog() {
         int selectedRow = table.getSelectedRow();
         if(selectedRow >= 0) {
@@ -214,7 +197,7 @@ public class StoreItemListView extends JFrame implements IStoreItemListView {
             ReserveStoreItemDialog reserveStoreItemDialog = new ReserveStoreItemDialog(storeItemDTO);
             reserveStoreItemDialog.setVisible(true);
         }
->>>>>>> 876759bd7a1a3c3ede9ab3bcbb1b75ac4d2fd0c0
+
 	}
 
 	

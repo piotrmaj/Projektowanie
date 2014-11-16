@@ -43,6 +43,7 @@ public class AddEditStoreItemDialog extends JDialog {
 		
 		presenter = new StoreItemListViewPresenter(this);
 		this.productDTO = list;
+		
 
 		setBounds(100, 100, 324, 208);
 		getContentPane().setLayout(new BorderLayout());
@@ -169,19 +170,12 @@ public class AddEditStoreItemDialog extends JDialog {
 	}
 
 	public void setStoreItem(StoreItemDTO storeItem) {
-<<<<<<< HEAD
 		this.storeItem = storeItem;
 		edit  = true;
 		textField.setText(storeItem.getName());
 		textField_1.setText(""+ storeItem.getPrice());
 		textField_2.setText("" + storeItem.getCount() );
 		
-=======
-		this.storeitem = storeItem;
-		textField.setText(storeitem.getName());
-		textField_1.setText(Float.toString(storeitem.getPrice()));
-		textField_2.setText(Integer.toString(storeitem.getCount()));
->>>>>>> 876759bd7a1a3c3ede9ab3bcbb1b75ac4d2fd0c0
 	}
 
 	
