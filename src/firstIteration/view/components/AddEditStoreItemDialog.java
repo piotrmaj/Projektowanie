@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JFrame;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -19,7 +19,7 @@ import javax.swing.SwingConstants;
 import firstIteration.presenter.IStoreItemListViewPresenter;
 import firstIteration.presenter.impl.StoreItemListViewPresenter;
 
-public class AddEditStoreItemDialog extends JFrame {
+public class AddEditStoreItemDialog extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private JTextField textField;

@@ -91,8 +91,27 @@ public class ImplIProductModel implements IProductModel {
 
 	@Override
 	public List<ProductDTO> getProducts(IProductFilter filter) {
-		// TODO Auto-generated method stub
-		return null;
+		if (filter.getName() == null || filter.getName().trim().isEmpty()) {
+			return getProducts();
+		} else {
+			ConnectionSource conn = null;
+			try {
+				conn = DatabaseNode.getInstance().getConnection();
+				
+				Dao<ProductDTO, Integer> productDao = DaoManager.createDao(conn, ProductDTO.class);
+				
+				List<ProductDTO> products = productDao.queryBuilder().where().
+						eq("name", filter.getName()).query();
+				
+				return products;
+			} catch (SQLException e) {
+				e.printStackTrace();
+				return null;
+			} finally {
+				if(conn != null)
+					conn.closeQuietly();
+			}
+		}
 	}
 
 	@Override

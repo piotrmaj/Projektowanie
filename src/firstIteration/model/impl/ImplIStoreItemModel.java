@@ -89,8 +89,27 @@ public class ImplIStoreItemModel implements IStoreItemModel {
 
 	@Override
 	public List<StoreItemDTO> getStoreItems(IStoreItemFilter filter) {
-		// TODO Auto-generated method stub
-		return null;
+		if (filter.getName() == null || filter.getName().trim().isEmpty()) {
+			return getStoreItems();
+		} else {
+			ConnectionSource conn = null;
+			try {
+				conn = DatabaseNode.getInstance().getConnection();
+				
+				Dao<StoreItemDTO, Integer> storeItemDao = DaoManager.createDao(conn, StoreItemDTO.class);
+				
+				List<StoreItemDTO> storeItems = storeItemDao.queryBuilder().where().
+						eq("name", filter.getName()).query();
+				
+				return storeItems;
+			} catch (SQLException e) {
+				e.printStackTrace();
+				return null;
+			} finally {
+				if(conn != null)
+					conn.closeQuietly();
+			}
+		}
 	}
 
 	@Override
@@ -112,7 +131,22 @@ public class ImplIStoreItemModel implements IStoreItemModel {
 
 	@Override
 	public void processSendStoreItems(List<StoreItemDTO> items) {
-		// TODO Auto-generated method stub
+		ConnectionSource conn = null;
+		try {
+			conn = DatabaseNode.getInstance().getConnection();
+			
+			Dao<StoreItemDTO, Integer> storeItemDao = DaoManager.createDao(conn, StoreItemDTO.class);
+			
+			for(StoreItemDTO item : items) {
+				item.setAvailable(0);
+				storeItemDao.update(item);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if(conn != null)
+				conn.closeQuietly();
+		}
 	}
 
 }
