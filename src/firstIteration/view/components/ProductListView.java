@@ -83,7 +83,11 @@ public class ProductListView extends JFrame implements IProductListView {
 		JButton editButton = new JButton("Edytuj");
 		editButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				presenter.onEditProductClick(table.getSelectedRow());
+				int selected = table.getSelectedRow();
+				
+				if(selected >= 0) {
+					presenter.onEditProductClick(selected);
+				}
 			}
 		});
 		editButton.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -95,7 +99,11 @@ public class ProductListView extends JFrame implements IProductListView {
 		JButton deleteButton = new JButton("Usu\u0144");
 		deleteButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				presenter.onDeleteProductClick(table.getSelectedRow());
+				int selected = table.getSelectedRow();
+				
+				if(selected >= 0) {
+					presenter.onDeleteProductClick(selected);
+				}
 			}
 		});
 		deleteButton.setAlignmentX(Component.CENTER_ALIGNMENT);
