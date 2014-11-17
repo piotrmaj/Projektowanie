@@ -110,11 +110,12 @@ public class StoreItemListView extends JFrame implements IStoreItemListView {
 				
 			    Object selectedObject = null;
 				int selectedRowIndex = table.getSelectedRow();
-				if(selectedRowIndex != -1) {
+				if(selectedRowIndex >= 0) {
 					selectedObject = (Object) table.getModel().getValueAt(selectedRowIndex, 0);
+				
+					int id = (int) selectedObject;
+					presenter.onEditItemStoreButtonClick(id);
 				}
-				int id = (int) selectedObject;
-				presenter.onEditItemStoreButtonClick(id);
 			}
 		});
 		btnNewButton_4.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -128,10 +129,11 @@ public class StoreItemListView extends JFrame implements IStoreItemListView {
 			public void actionPerformed(ActionEvent arg0) {
 				Object selectedObject = null;
 				int selectedRowIndex = table.getSelectedRow();
-				if(selectedRowIndex != -1) {
+				if(selectedRowIndex >= 0) {
 					selectedObject = (Object) table.getModel().getValueAt(selectedRowIndex, 0);
+				
+					presenter.onDeleteItemStoreButtonClick((int)selectedObject);
 				}
-				presenter.onDeleteItemStoreButtonClick((int)selectedObject);
 				
 			}
 		});
