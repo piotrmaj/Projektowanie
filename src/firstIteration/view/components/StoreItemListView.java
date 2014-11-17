@@ -50,8 +50,14 @@ public class StoreItemListView extends JFrame implements IStoreItemListView {
 		btnNewButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				int id =1;
-				presenter.onConfirmSendButtonClick(id);
+				 Object selectedObject = null;
+	                int selectedRowIndex = table.getSelectedRow();
+	                if(selectedRowIndex >= 0) {
+	                    selectedObject = table.getModel().getValueAt(selectedRowIndex, 0);
+	                    Integer id = (Integer) selectedObject;
+	                    presenter.onConfirmSendButtonClick(id);
+	                }
+				
 			}
 		});
 		verticalBox.add(btnNewButton);

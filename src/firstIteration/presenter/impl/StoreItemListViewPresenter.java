@@ -39,7 +39,7 @@ public class StoreItemListViewPresenter implements IStoreItemListViewPresenter {
 	
 	@Override
 	public void onConfirmSendButtonClick(int id) {
-		confirmDialog = new ConfirmSendingStoreItemDialog(storeModel.getStoreItem(id));
+		confirmDialog = new ConfirmSendingStoreItemDialog(this, storeModel.getStoreItem(id));
 		confirmDialog.setVisible(true);
 	}
 	
@@ -47,12 +47,13 @@ public class StoreItemListViewPresenter implements IStoreItemListViewPresenter {
 	@Override
 	public void onUpdateConfirmSendButtonClick(int count, StoreItemDTO storeItemFromView) {
 		
-		int countToUpdate = storeItemFromView.getCount() - count;
+		int countToUpdate = storeItemFromView.getAvailable() - count;
 		if(countToUpdate < 0)
 			countToUpdate = 0;
 		
 		storeItemFromView.setCount(countToUpdate);
 		storeModel.updateStoreItem(storeItemFromView);
+		view.populateListView(storeModel.getStoreItems());
 	}
 
 	@Override

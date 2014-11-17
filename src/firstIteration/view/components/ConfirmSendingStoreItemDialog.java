@@ -34,8 +34,8 @@ public class ConfirmSendingStoreItemDialog extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public ConfirmSendingStoreItemDialog(StoreItemDTO storeItem) {
-		presenter = new StoreItemListViewPresenter(this);
+	public ConfirmSendingStoreItemDialog(IStoreItemListViewPresenter presenter, StoreItemDTO storeItem) {
+		this.presenter = presenter;
 		this.storeitem = storeItem;
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
@@ -60,7 +60,7 @@ public class ConfirmSendingStoreItemDialog extends JDialog {
 				panel.add(lblId, gbc_lblId);
 			}
 			{
-				JLabel lblNewLabel = new JLabel("New label");
+				JLabel lblNewLabel = new JLabel("" + storeItem.getId());
 				GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
 				gbc_lblNewLabel.insets = new Insets(0, 0, 5, 0);
 				gbc_lblNewLabel.gridx = 1;
@@ -76,7 +76,7 @@ public class ConfirmSendingStoreItemDialog extends JDialog {
 				panel.add(lblNewLabel_1, gbc_lblNewLabel_1);
 			}
 			{
-				JLabel lblNewLabel_2 = new JLabel("New label");
+				JLabel lblNewLabel_2 = new JLabel("" + storeItem.getProductId());
 				GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
 				gbc_lblNewLabel_2.insets = new Insets(0, 0, 5, 0);
 				gbc_lblNewLabel_2.gridx = 1;
@@ -92,7 +92,7 @@ public class ConfirmSendingStoreItemDialog extends JDialog {
 				panel.add(lblNewLabel_3, gbc_lblNewLabel_3);
 			}
 			{
-				JLabel lblNewLabel_4 = new JLabel("New label");
+				JLabel lblNewLabel_4 = new JLabel(storeItem.getName());
 				GridBagConstraints gbc_lblNewLabel_4 = new GridBagConstraints();
 				gbc_lblNewLabel_4.insets = new Insets(0, 0, 5, 0);
 				gbc_lblNewLabel_4.gridx = 1;
@@ -108,7 +108,7 @@ public class ConfirmSendingStoreItemDialog extends JDialog {
 				panel.add(lblNewLabel_5, gbc_lblNewLabel_5);
 			}
 			{
-				JLabel lblNewLabel_6 = new JLabel("New label");
+				JLabel lblNewLabel_6 = new JLabel("" + storeItem.getAvailable());
 				GridBagConstraints gbc_lblNewLabel_6 = new GridBagConstraints();
 				gbc_lblNewLabel_6.insets = new Insets(0, 0, 5, 0);
 				gbc_lblNewLabel_6.gridx = 1;
@@ -124,7 +124,7 @@ public class ConfirmSendingStoreItemDialog extends JDialog {
 				panel.add(lblNewLabel_7, gbc_lblNewLabel_7);
 			}
 			{
-				JLabel lblNewLabel_8 = new JLabel("New label");
+				JLabel lblNewLabel_8 = new JLabel("" + storeItem.getPrice());
 				GridBagConstraints gbc_lblNewLabel_8 = new GridBagConstraints();
 				gbc_lblNewLabel_8.insets = new Insets(0, 0, 5, 0);
 				gbc_lblNewLabel_8.gridx = 1;
@@ -140,7 +140,7 @@ public class ConfirmSendingStoreItemDialog extends JDialog {
 				panel.add(lblNewLabel_9, gbc_lblNewLabel_9);
 			}
 			{
-				JLabel lblNewLabel_10 = new JLabel("New label");
+				JLabel lblNewLabel_10 = new JLabel("" + storeItem.getUnit());
 				GridBagConstraints gbc_lblNewLabel_10 = new GridBagConstraints();
 				gbc_lblNewLabel_10.gridx = 1;
 				gbc_lblNewLabel_10.gridy = 5;
@@ -197,6 +197,7 @@ public class ConfirmSendingStoreItemDialog extends JDialog {
 				JButton okButton = new JButton("OK");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
+						ConfirmSendingStoreItemDialog.this.presenter.onUpdateConfirmSendButtonClick(Integer.parseInt(textField.getText()), storeitem);
 						setVisible(false);
 					}
 				});
