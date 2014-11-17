@@ -1,8 +1,8 @@
 package firstIteration.view.components;
 
 import dto.StoreItemDTO;
-import firstIteration.presenter.IStoreItemReservePresenter;
-import firstIteration.presenter.impl.StoreItemReservePresenter;
+import firstIteration.presenter.IStoreItemListViewPresenter;
+import firstIteration.presenter.impl.StoreItemListViewPresenter;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -16,18 +16,19 @@ public class ReserveStoreItemDialog extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private JTextField textField;
-    private IStoreItemReservePresenter storeItemReservePresenter = new StoreItemReservePresenter();
+    private IStoreItemListViewPresenter storeItemListViewPresenter;
 
 	/**
 	 * Create the dialog.
 	 */
-	public ReserveStoreItemDialog(final StoreItemDTO dto) {
+	public ReserveStoreItemDialog(StoreItemListViewPresenter storeItemListViewPresenter, final StoreItemDTO dto) {
 		setBounds(100, 100, 450, 300);
+        this.storeItemListViewPresenter = storeItemListViewPresenter;
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
-		{
+            {
 			JLabel lblId = new JLabel("Id");
 			lblId.setBounds(25, 11, 100, 14);
 			contentPanel.add(lblId);
@@ -113,7 +114,7 @@ public class ReserveStoreItemDialog extends JDialog {
                 okButton.addMouseListener(new MouseAdapter() {
                     @Override
                     public void mouseClicked(MouseEvent e) {
-                        String result = storeItemReservePresenter.onReserveButtonClicked(textField.getText(), dto);
+                        String result = ReserveStoreItemDialog.this.storeItemListViewPresenter.onConfimReserveStoreItemButtonClicked(textField.getText(), dto);
                         if(result == null) {
                             setVisible(false);
                         }

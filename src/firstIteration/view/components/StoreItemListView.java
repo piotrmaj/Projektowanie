@@ -69,8 +69,7 @@ public class StoreItemListView extends JFrame implements IStoreItemListView {
                 int selectedRowIndex = table.getSelectedRow();
                 if(selectedRowIndex >= 0) {
                     selectedObject = table.getModel().getValueAt(selectedRowIndex, 0);
-
-                    int id = (int) selectedObject;
+                    Integer id = (Integer) selectedObject;
                     presenter.onReserveButtonClick(id);
                 }
 			}
@@ -83,7 +82,13 @@ public class StoreItemListView extends JFrame implements IStoreItemListView {
 		
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				presenter.onReleaseButtonClick();
+                Object selectedObject = null;
+                int selectedRowIndex = table.getSelectedRow();
+                if(selectedRowIndex >= 0) {
+                    selectedObject = table.getModel().getValueAt(selectedRowIndex, 0);
+                    Integer id = (Integer) selectedObject;
+                    presenter.onReleaseButtonClick(id);
+                }
 			}
 		});
 		verticalBox.add(btnNewButton_2);
@@ -111,8 +116,7 @@ public class StoreItemListView extends JFrame implements IStoreItemListView {
 				int selectedRowIndex = table.getSelectedRow();
 				if(selectedRowIndex >= 0) {
 					selectedObject = (Object) table.getModel().getValueAt(selectedRowIndex, 0);
-				
-					int id = (int) selectedObject;
+                    Integer id = (Integer) selectedObject;
 					presenter.onEditItemStoreButtonClick(id);
 				}
 			}
@@ -130,8 +134,8 @@ public class StoreItemListView extends JFrame implements IStoreItemListView {
 				int selectedRowIndex = table.getSelectedRow();
 				if(selectedRowIndex >= 0) {
 					selectedObject = (Object) table.getModel().getValueAt(selectedRowIndex, 0);
-				
-					presenter.onDeleteItemStoreButtonClick((int)selectedObject);
+                    Integer id = (Integer) selectedObject;
+					presenter.onDeleteItemStoreButtonClick(id);
 				}
 				
 			}
@@ -197,17 +201,5 @@ public class StoreItemListView extends JFrame implements IStoreItemListView {
 		}
 		
 	}
-	public void ShowReservreStoreItemDialog() {
-        int selectedRow = table.getSelectedRow();
-        if(selectedRow >= 0) {
-            StoreItemDTO storeItemDTO = items.get(selectedRow - 1);
-            ReserveStoreItemDialog reserveStoreItemDialog = new ReserveStoreItemDialog(storeItemDTO);
-            reserveStoreItemDialog.setVisible(true);
-        }
-
-	}
-
-	
-
 	
 }

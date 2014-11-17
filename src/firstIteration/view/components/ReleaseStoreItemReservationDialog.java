@@ -1,40 +1,41 @@
 package firstIteration.view.components;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
+import dto.StoreItemDTO;
+import firstIteration.presenter.IStoreItemListViewPresenter;
+import firstIteration.presenter.impl.StoreItemListViewPresenter;
+
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 
 public class ReleaseStoreItemReservationDialog extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
-
+    private JTextField textField;
+    private IStoreItemListViewPresenter storeItemListViewPresenter;
 	/**
 	 * Create the dialog.
 	 */
-	public ReleaseStoreItemReservationDialog() {
+	public ReleaseStoreItemReservationDialog(StoreItemListViewPresenter storeItemListViewPresenter, final StoreItemDTO dto) {
 		setBounds(100, 100, 450, 300);
+        this.storeItemListViewPresenter = storeItemListViewPresenter;
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
-		{
-			JLabel lblWybierzRezerwacjeDo = new JLabel("Wybierz rezerwacje do zwolnienia");
-			lblWybierzRezerwacjeDo.setBounds(131, 65, 174, 14);
-			contentPanel.add(lblWybierzRezerwacjeDo);
-		}
-		{
-			JComboBox comboBox = new JComboBox();
-			comboBox.setBounds(141, 97, 131, 20);
-			contentPanel.add(comboBox);
-		}
+        {
+            JLabel lblNewLabel_11 = new JLabel("Zwolnij rezerwacje nast\u0119puj\u0105cej ilo\u015Bci ");
+            lblNewLabel_11.setBounds(131, 65, 300, 14);
+            contentPanel.add(lblNewLabel_11);
+        }
+        {
+            textField = new JTextField();
+            textField.setBounds(141, 97, 131, 20);
+            contentPanel.add(textField);
+            textField.setColumns(10);
+        }
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -44,7 +45,14 @@ public class ReleaseStoreItemReservationDialog extends JDialog {
 				okButton.setActionCommand("OK");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
-						setVisible(false);
+                        String result = ReleaseStoreItemReservationDialog.this.storeItemListViewPresenter.
+                                onConfimReleaseStoreItemReservationButtonClicked(textField.getText(), dto);
+                        if(result == null) {
+                            setVisible(false);
+                        }
+                        else {
+                            JOptionPane.showMessageDialog(ReleaseStoreItemReservationDialog.this, result, "Błąd", JOptionPane.ERROR_MESSAGE);
+                        }
 					}
 				});
 				buttonPane.add(okButton);

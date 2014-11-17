@@ -9,6 +9,7 @@ import firstIteration.view.IStoreItemListView;
 import firstIteration.view.components.AddEditStoreItemDialog;
 import firstIteration.view.components.ConfirmSendingStoreItemDialog;
 import firstIteration.view.components.DeleteStoreItemDialog;
+import firstIteration.view.components.ReleaseStoreItemReservationDialog;
 import firstIteration.view.components.ReserveStoreItemDialog;
 
 public class StoreItemListViewPresenter implements IStoreItemListViewPresenter {
@@ -57,14 +58,15 @@ public class StoreItemListViewPresenter implements IStoreItemListViewPresenter {
 	@Override
 	public void onReserveButtonClick(int id) {
         StoreItemDTO storeItem = storeModel.getStoreItem(id);
-        ReserveStoreItemDialog reserveStoreItemDialog = new ReserveStoreItemDialog(storeItem);
+        ReserveStoreItemDialog reserveStoreItemDialog = new ReserveStoreItemDialog(this, storeItem);
         reserveStoreItemDialog.setVisible(true);
     }
-	
-	@Override
-	public void onReleaseButtonClick() {
-		//TODO okno dialogowo z zwolnieniem rezerwacji
-		
+
+    @Override
+	public void onReleaseButtonClick(int id) {
+        StoreItemDTO storeItem = storeModel.getStoreItem(id);
+        ReleaseStoreItemReservationDialog releaseStoreItemReservationDialog = new ReleaseStoreItemReservationDialog(this, storeItem);
+        releaseStoreItemReservationDialog.setVisible(true);
 	}
 
 
@@ -109,6 +111,54 @@ public class StoreItemListViewPresenter implements IStoreItemListViewPresenter {
 		storeModel.createStoreItem(storeitem);
 		view.populateListView(storeModel.getStoreItems());
 	}
+
+    @Override
+    public String onConfimReserveStoreItemButtonClicked(String amount, StoreItemDTO storeItem) {
+        if (amount.isEmpty()) {
+            return "Pole 'ilość' nie może być puste";
+        }
+
+        int amountValue;
+        try {
+            amountValue = Integer.parseInt(amount);
+        } catch (NumberFormatException ex) {
+            return "Pole 'ilość' powinno zawierać liczbę całkowitą";
+        }
+
+        if (amountValue < 0) {
+            return "Pole 'ilość' powinno zawierać liczbę większą od zera";
+        }
+
+        if (amountValue > storeItem.getAvailable()) {
+            return "Nie można zarezerwować - podano ilość większą niż dostępna ilość produktów";
+        }
+
+        storeItem.setAvailable(storeItem.getAvailable() - amountValue);
+        storeModel.updateStoreItem(storeItem);
+        return null;
+    }
+
+    @Override
+    public String onConfimReleaseStoreItemReservationButtonClicked(String amount, StoreItemDTO storeItem) {
+        if (amount.isEmpty()) {
+            return "Pole 'ilość' nie może być puste";
+        }
+
+        int amountValue;
+        try {
+            amountValue = Integer.parseInt(amount);
+        } catch (NumberFormatException ex) {
+            return "Pole 'ilość' powinno zawierać liczbę całkowitą";
+        }
+
+        if (amountValue < 0) {
+            return "Pole 'ilość' powinno zawierać liczbę większą od zera";
+        }
+
+        storeItem.setAvailable(storeItem.getAvailable() + amountValue);
+        storeModel.updateStoreItem(storeItem);
+        return null;
+    }
 
 	@Override
 	public void onStoreItemListViewCreated() {
