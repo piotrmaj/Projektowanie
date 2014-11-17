@@ -11,7 +11,7 @@ public class StoreItemReservePresenter implements IStoreItemReservePresenter {
 
     @Override
     public String onReserveButtonClicked(String amount, StoreItemDTO dto) {
-        if (!amount.isEmpty()) {
+        if (amount.isEmpty()) {
             return "Pole 'ilość' nie może być puste";
         }
 

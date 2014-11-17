@@ -9,6 +9,7 @@ import firstIteration.view.IStoreItemListView;
 import firstIteration.view.components.AddEditStoreItemDialog;
 import firstIteration.view.components.ConfirmSendingStoreItemDialog;
 import firstIteration.view.components.DeleteStoreItemDialog;
+import firstIteration.view.components.ReserveStoreItemDialog;
 
 public class StoreItemListViewPresenter implements IStoreItemListViewPresenter {
 	ImplIStoreItemModel storeModel = new ImplIStoreItemModel();
@@ -54,10 +55,11 @@ public class StoreItemListViewPresenter implements IStoreItemListViewPresenter {
 	}
 
 	@Override
-	public void onReserveButtonClick() {
-		//TODO wyiwtlanie okna dialogowo z rezerwacja
-
-	}
+	public void onReserveButtonClick(int id) {
+        StoreItemDTO storeItem = storeModel.getStoreItem(id);
+        ReserveStoreItemDialog reserveStoreItemDialog = new ReserveStoreItemDialog(storeItem);
+        reserveStoreItemDialog.setVisible(true);
+    }
 	
 	@Override
 	public void onReleaseButtonClick() {

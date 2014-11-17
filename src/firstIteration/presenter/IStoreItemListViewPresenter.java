@@ -6,7 +6,7 @@ public interface IStoreItemListViewPresenter {
 
 void onConfirmSendButtonClick(int id);
 	
-	void onReserveButtonClick();
+	void onReserveButtonClick(int id);
 	
 	void onReleaseButtonClick();
 	

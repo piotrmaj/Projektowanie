@@ -1,25 +1,18 @@
 package firstIteration.view.components;
 
-import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.Dialog.ModalExclusionType;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.List;
-
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JTable;
-import javax.swing.border.EmptyBorder;
-import javax.swing.table.AbstractTableModel;
-
 import dto.StoreItemDTO;
 import firstIteration.presenter.IStoreItemListViewPresenter;
 import firstIteration.presenter.impl.StoreItemListViewPresenter;
 import firstIteration.view.IStoreItemListView;
+
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import javax.swing.table.AbstractTableModel;
+import java.awt.*;
+import java.awt.Dialog.ModalExclusionType;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.List;
 
 public class StoreItemListView extends JFrame implements IStoreItemListView {
 
@@ -72,8 +65,14 @@ public class StoreItemListView extends JFrame implements IStoreItemListView {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				presenter.onReserveButtonClick();
-				
+                Object selectedObject = null;
+                int selectedRowIndex = table.getSelectedRow();
+                if(selectedRowIndex >= 0) {
+                    selectedObject = table.getModel().getValueAt(selectedRowIndex, 0);
+
+                    int id = (int) selectedObject;
+                    presenter.onReserveButtonClick(id);
+                }
 			}
 		});
 		verticalBox.add(btnNewButton_1);
